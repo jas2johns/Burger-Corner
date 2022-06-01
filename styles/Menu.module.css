@@ -1,0 +1,13 @@
+.menu-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    background-color: white;
+}
+
+.menu-container > div {
+    min-width: 200px;
+    min-height: 200px;
+    border: thin solid black;
+    gap: 1em;
+}
