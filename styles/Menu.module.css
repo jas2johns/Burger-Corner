@@ -6,8 +6,9 @@
 }
 
 .menu-container > div {
-    min-width: 200px;
-    min-height: 200px;
-    border: thin solid black;
+    padding: 85px;
+    min-width: 125px;
+    min-height: 125px;
+    border: gold transparent;
     gap: 1em;
 }

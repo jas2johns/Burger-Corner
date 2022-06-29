@@ -12,7 +12,13 @@ export default function Home() {
 			</Head>
 
 			<main>
-				<Link href="menu">Menu</Link>
+			{/* 
+				content
+				content
+				content
+				content
+			
+			*/}
 			</main>
 
 			<footer></footer>

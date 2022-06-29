@@ -6,8 +6,8 @@ const MenuItem = () => {
 	return (
 		<>
 			<div>
-				<Image src={burgerImg} />
-				<button>Order</button>
+				<Image className="img" src={burgerImg} />
+				<button className="button">Order</button>
 			</div>
 		</>
 	);
