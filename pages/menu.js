@@ -17,7 +17,7 @@ const Menu = () => {
 					</div>
 					<div>
 						<MenuItem />
-						<span>Double, 2 Mustard Grilled Patties, 
+						<span>Double, (2) Mustard Grilled Patties, 
 							"white" American Cheese, fresh shredded lettuce, tomato
 						</span>
 

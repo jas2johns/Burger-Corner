@@ -1,17 +1,12 @@
 import Link from 'next/link';
+import styles from '../styles/navbar.module.css';
 const Navbar = () => {
-	const styles = {
-		display: 'flex',
-		backgroundColor: '#bfe3b4',
-		justifyContent: 'space-between',
-        padding: '0.5rem'
-	};
 	return (
-		<div style={styles}>
+		<nav className={styles.nav}>
 			<Link href="/">
 				<a>Home</a>
 			</Link>
-            <Link href="/menu">
+			<Link href="/menu">
 				<a>Menu!</a>
 			</Link>
 			<Link href="/about">
@@ -20,7 +15,7 @@ const Navbar = () => {
 			<Link href="/contact">
 				<a>Contact Page</a>
 			</Link>
-		</div>
+		</nav>
 	);
 };
 

@@ -1,0 +1,9 @@
+.nav {
+	display: flex;
+	background-color: #bfe3b4;
+	justify-content: space-between;
+	padding: 0.5rem;
+}
+.nav a:hover{
+    color: white;
+}
