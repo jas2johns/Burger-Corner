@@ -1,13 +1,26 @@
 import styles from "../styles/MenuItem.module.css";
-import burgerImg from "../public/BURGER.jpg";
+import { useRouter } from "next/router";
 import Image from "next/image";
 
-const MenuItem = () => {
+const MenuItem = (props) => {
+	const { description, image, id } = props;
+
+	const router = useRouter();
+
+	const goToDetailPage = (id) => {
+		// navigate to the detail page, passing the item Id
+		router.push(`/itemDetail?itemId=${id}`);
+	};
+
 	return (
 		<>
 			<div>
-				<Image className="img" src={burgerImg} />
-				<button className="button">Order</button>
+				<Image src={"/" + image} width="250" height="250" />
+				<button className="button" onClick={() => goToDetailPage(id)}>
+					Order
+				</button>
+				<br />
+				<span>{description}</span>
 			</div>
 		</>
 	);
