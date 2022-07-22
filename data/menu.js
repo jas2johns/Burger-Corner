@@ -27,7 +27,7 @@ const data = {
 		{
 			id: 5,
 			description:
-				'California,Mustard Grilled Patty, Oaxacan Cheese, fresh shredded lettuce, avo slices and a side of "Pico de gallo"',
+				'California, Mustard Grilled Patty, Oaxacan Cheese, fresh shredded lettuce, avo slices and a side of "Pico de gallo"',
 			image: "BURGER.jpg",
 		},
 		{
