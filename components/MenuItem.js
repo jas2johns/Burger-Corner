@@ -23,7 +23,7 @@ const MenuItem = (props) => {
 				<span>{description}</span>
 			</div>
 			<button className={styles.button}>Order</button>
-		</div>
+		</>
 	);
 };
 

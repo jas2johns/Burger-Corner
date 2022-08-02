@@ -1,27 +1,29 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import styles from "../styles/Home.module.css";
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
+import styles from '../styles/Home.module.css';
+import 'bootstrap/dist/css/bootstrap.min';
+import { ShoppingCartProvider } from '../context/ShoppingCartContext';
 
 export default function Home() {
 	return (
-		<div>
-			<Head>
-				<title>Burger Corner</title>
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+		<ShoppingCartProvider>
+			<div>
+				<Head>
+					<title>Burger Corner</title>
+					<link rel="icon" href="/favicon.ico" />
+				</Head>
 
-			<main>
-			{/* 
+				<main>{/* 
 				content
 				content
 				content
 				content
 			
-			*/}
-			</main>
+			*/}</main>
 
-			<footer></footer>
-		</div>
+				<footer />
+			</div>
+		</ShoppingCartProvider>
 	);
 }
