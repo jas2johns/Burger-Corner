@@ -1,10 +1,14 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useShoppingCart } from '../context/ShoppingCartContext';
 import Image from "next/image";
 import data from "../data/menu";
 import styles from "../styles/ItemDetail.module.css";
 
 const ItemDetail = () => {
+	const {
+		increaseCartQuantity
+	} = useShoppingCart();
 	const router = useRouter();
 	const [item, setItem] = useState();
 
@@ -19,9 +23,8 @@ const ItemDetail = () => {
 		}
 	}, [router.isReady]);
 
-	const addToCart = (itemId) => {
-		// TODO: actually add to the cart
-		console.log("added item to the cart", itemId);
+	const addToCart = (item) => {
+		increaseCartQuantity(item);
 	};
 
 	return (
@@ -31,7 +34,7 @@ const ItemDetail = () => {
 			<h3>Item Description</h3>
 			<p>{item?.description}</p>
 
-			<button onClick={() => addToCart(item?.id)}>Add to Cart</button>
+			<button onClick={() => addToCart(item)}>Add to Cart</button>
 		</div>
 	);
 };

@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { useShoppingCart } from '../context/ShoppingCartContext';
 
 const ShoppingCart = () => {
-	const [cartItems, setCartItems] = useState();
-
+	const { getCartItems } = useShoppingCart();
+	const [cartItems, setCartItems] = useState([]);
 	useEffect(() => {
-		// TODO: Get the cart items and set them with setCartItems()
+		const items = getCartItems()
+		setCartItems(items);
 	}, []);
 
 	return (
@@ -14,10 +16,26 @@ const ShoppingCart = () => {
 				<table>
 					<thead>
 						<tr>
-							<th>Items?</th>
+							<th>Items</th>
+							<th>Quantity</th>
+							<th></th>
 						</tr>
 					</thead>
-					<tbody>{/* For each item in cart, create a tr */}</tbody>
+					<tbody>
+						{cartItems.map(i =>
+							<tr>
+								<td>
+									{i.menuItem.description}
+								</td>
+								<td>
+									{i.quantity}
+								</td>
+								<td>
+									<button>Remove</button>
+								</td>
+							</tr>
+						)}
+					</tbody>
 				</table>
 			</div>
 			<button>Checkout</button>
