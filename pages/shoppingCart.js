@@ -2,12 +2,17 @@ import { useEffect, useState, useContext } from "react";
 import { useShoppingCart } from '../context/ShoppingCartContext';
 
 const ShoppingCart = () => {
-	const { getCartItems } = useShoppingCart();
-	const [cartItems, setCartItems] = useState([]);
-	useEffect(() => {
-		const items = getCartItems()
-		setCartItems(items);
-	}, []);
+	const {cartItems,  
+		getCartItems,
+		getItemQuantity,
+		increaseCartQuantity,
+		decreaseCartQuantity,
+		removeFromCart } = useShoppingCart();
+	//const [cartItems, setCartItems] = useState([]);
+	//useEffect(() => {
+	//	const items = getCartItems()
+	//	setCartItems(items);
+	//}, []);
 
 	return (
 		<>
@@ -31,7 +36,13 @@ const ShoppingCart = () => {
 									{i.quantity}
 								</td>
 								<td>
-									<button>Remove</button>
+								<button onClick={()=>increaseCartQuantity(i)}>increase</button>	
+								</td>
+								<td>
+									<button onClick={()=>decreaseCartQuantity(i)}>decrease</button>
+								</td>
+								<td>
+									<button onClick={()=>removeFromCart(i.id)}>Remove</button>
 								</td>
 							</tr>
 						)}
