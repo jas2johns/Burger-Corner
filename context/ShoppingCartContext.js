@@ -29,15 +29,15 @@ export function ShoppingCartProvider({ children }) {
     }
 
     function increaseCartQuantity(menuItem) {
-            setCartItems(currItems => {
+        setCartItems(currItems => {
             // if the array does NOT have a matching Obj.id it will return with a Qty of 1 
             const existingCartItem = currItems.find(item => item.menuItem.id === menuItem.id);
             // this is the problem
             console.log(existingCartItem);
 
-            if ( existingCartItem == null) {
+            if (existingCartItem == null) {
                 return [...currItems, { menuItem: menuItem, quantity: 1 }]
-            } 
+            }
             // if the array does have a matching Obj.id then it will increase it by 1
             else {
                 return currItems.map(item => {
@@ -65,7 +65,7 @@ export function ShoppingCartProvider({ children }) {
 
     function removeFromCart(id) {
         setCartItems(currItems => {
-            return currItems.filter(item => item.id !== id)
+            return currItems.filter(item => item.menuItem.id !== id)
         })
     }
     return (

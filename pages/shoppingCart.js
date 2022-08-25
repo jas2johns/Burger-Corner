@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useShoppingCart } from '../context/ShoppingCartContext';
 
 const ShoppingCart = () => {
-	const {cartItems,  
+	const { cartItems,
 		getCartItems,
 		getItemQuantity,
 		increaseCartQuantity,
@@ -28,7 +28,7 @@ const ShoppingCart = () => {
 					</thead>
 					<tbody>
 						{cartItems.map(i =>
-							<tr>
+							<tr key={i.id}>
 								<td>
 									{i.menuItem.description}
 								</td>
@@ -36,13 +36,13 @@ const ShoppingCart = () => {
 									{i.quantity}
 								</td>
 								<td>
-								<button onClick={()=>increaseCartQuantity(i)}>increase</button>	
+									<button onClick={() => increaseCartQuantity(i.menuItem)}>increase</button>
 								</td>
 								<td>
-									<button onClick={()=>decreaseCartQuantity(i)}>decrease</button>
+									<button onClick={() => decreaseCartQuantity(i.menuItem)}>decrease</button>
 								</td>
 								<td>
-									<button onClick={()=>removeFromCart(i.id)}>Remove</button>
+									<button onClick={() => removeFromCart(i.menuItem.id)}>Remove</button>
 								</td>
 							</tr>
 						)}
