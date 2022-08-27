@@ -28,7 +28,7 @@ const ShoppingCart = () => {
 					</thead>
 					<tbody>
 						{cartItems.map(i =>
-							<tr key={i.id}>
+							<tr key={i.menuItem.id}>
 								<td>
 									{i.menuItem.description}
 								</td>
@@ -42,7 +42,7 @@ const ShoppingCart = () => {
 									<button onClick={() => decreaseCartQuantity(i.menuItem)}>decrease</button>
 								</td>
 								<td>
-									<button onClick={() => removeFromCart(i.menuItem.id)}>Remove</button>
+									<button onClick={() => removeFromCart(i.menuItem)}>Remove</button>
 								</td>
 							</tr>
 						)}

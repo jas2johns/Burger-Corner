@@ -63,9 +63,9 @@ export function ShoppingCartProvider({ children }) {
         })
     }
 
-    function removeFromCart(id) {
+    function removeFromCart(menuItem) {
         setCartItems(currItems => {
-            return currItems.filter(item => item.menuItem.id !== id)
+            return currItems.filter(item => item.menuItem.id !== menuItem.id)
         })
     }
     return (
