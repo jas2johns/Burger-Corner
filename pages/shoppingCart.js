@@ -30,17 +30,17 @@ const ShoppingCart = () => {
 						{cartItems.map(i =>
 							<tr key={i.menuItem.id}>
 								<td>
-									
+
 									{i.menuItem.description}
 								</td>
 								<td>
 									{i.quantity}
 								</td>
 								<td>
-									<button onClick={() => increaseCartQuantity(i.menuItem.id)}>increase</button>
+									<button onClick={() => increaseCartQuantity(i.menuItem)}>increase</button>
 								</td>
 								<td>
-									<button onClick={() => decreaseCartQuantity(i.menuItem.id)}>decrease</button>
+									<button onClick={() => decreaseCartQuantity(i.menuItem)}>decrease</button>
 								</td>
 								<td>
 									<button onClick={() => removeFromCart(i.menuItem)}>Remove</button>
