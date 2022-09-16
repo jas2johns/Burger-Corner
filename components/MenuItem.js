@@ -1,6 +1,8 @@
 import styles from "../styles/MenuItem.module.css";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { Button } from "react-bootstrap";
+
 
 const MenuItem = (props) => {
 	const { description, image, id } = props;
@@ -16,9 +18,9 @@ const MenuItem = (props) => {
 		<>
 			<div>
 				<Image src={"/" + image} width="250" height="250" />
-				<button className="button" onClick={() => goToDetailPage(id)}>
-					Order
-				</button>
+				<Button className="button" onClick={() => goToDetailPage(id)}>
+					Add to Cart
+				</Button>
 				<br />
 				<span>{description}</span>
 			</div>
