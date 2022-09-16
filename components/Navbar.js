@@ -1,12 +1,15 @@
 import Link from 'next/link';
 import styles from '../styles/navbar.module.css';
-//import { Button, Card } from "react-bootstrap";
+import { useTheme } from '../context/ThemeContext';
+import {useEffect} from 'react';
 const Navbar = () => {
+	const { darkModeEnabled, setDarkModeEnabled } = useTheme();
+	useEffect(() => {console.log('darkModeEnabled',darkModeEnabled)},[darkModeEnabled]);
 	return (
-		<nav class="navbar navbar-expand-lg bg-light">
-			<div class="container-fluid">
+		<nav className={'navbar navbar-expand-lg ' + darkModeEnabled === true ? 'navbar-dark bg-dark' : 'bg-light'}>
+			<div className="container-fluid">
 				<button
-					class="navbar-toggler"
+					className="navbar-toggler"
 					type="button"
 					data-bs-toggle="collapse"
 					data-bs-target="#navbarTogglerDemo01"
@@ -14,13 +17,13 @@ const Navbar = () => {
 					aria-expanded="false"
 					aria-label="Toggle navigation"
 				>
-					<span class="navbar-toggler-icon" />
+					<span className="navbar-toggler-icon" />
 				</button>
-				<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+				<div className="collapse navbar-collapse" id="navbarTogglerDemo01">
 					<Link href="/">
 						<a className="navbar-brand">Burger Corner</a>
 					</Link>
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 						<li className="nav-item">
 							<Link href="/menu">
 								<a className="nav-link">Menu!</a>
@@ -42,6 +45,19 @@ const Navbar = () => {
 							</Link>
 						</li>
 					</ul>
+					<div className="form-check form-switch">
+						<input
+							checked={darkModeEnabled}
+							className="form-check-input"
+							onChange={() => setDarkModeEnabled(!darkModeEnabled)}
+							type="checkbox"
+							role="switch"
+							id="flexSwitchCheckDefault"
+						/>
+						<label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+							Dark Mode
+						</label>
+					</div>
 				</div>
 			</div>
 		</nav>
