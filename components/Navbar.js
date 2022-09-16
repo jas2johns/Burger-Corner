@@ -1,12 +1,16 @@
-import Link from 'next/link';
-import styles from '../styles/navbar.module.css';
-import { useTheme } from '../context/ThemeContext';
-import {useEffect} from 'react';
+import Link from "next/link";
+import { useTheme } from "../context/ThemeContext";
+
 const Navbar = () => {
 	const { darkModeEnabled, setDarkModeEnabled } = useTheme();
-	useEffect(() => {console.log('darkModeEnabled',darkModeEnabled)},[darkModeEnabled]);
+
 	return (
-		<nav className={'navbar navbar-expand-lg ' + darkModeEnabled === true ? 'navbar-dark bg-dark' : 'bg-light'}>
+		<nav
+			className={`navbar navbar-expand-lg ${
+				darkModeEnabled === true ? "navbar-dark bg-dark" : "bg-light"
+			}`}
+		>
+			{/* // <nav className="navbar navbar-expand-lg navbar-dark bg-dark"> */}
 			<div className="container-fluid">
 				<button
 					className="navbar-toggler"
@@ -19,7 +23,10 @@ const Navbar = () => {
 				>
 					<span className="navbar-toggler-icon" />
 				</button>
-				<div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+				<div
+					className="collapse navbar-collapse"
+					id="navbarTogglerDemo01"
+				>
 					<Link href="/">
 						<a className="navbar-brand">Burger Corner</a>
 					</Link>
@@ -49,12 +56,19 @@ const Navbar = () => {
 						<input
 							checked={darkModeEnabled}
 							className="form-check-input"
-							onChange={() => setDarkModeEnabled(!darkModeEnabled)}
+							onChange={() =>
+								setDarkModeEnabled(!darkModeEnabled)
+							}
 							type="checkbox"
 							role="switch"
 							id="flexSwitchCheckDefault"
 						/>
-						<label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+						<label
+							className={`form-check-label ${
+								darkModeEnabled ? "text-light bg-dark" : ""
+							}`}
+							htmlFor="flexSwitchCheckDefault"
+						>
 							Dark Mode
 						</label>
 					</div>
