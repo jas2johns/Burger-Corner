@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
+import '../styles/custom.scss';
 import '../styles/globals.css';
 import Navbar from '../components/Navbar';
 import { useEffect } from 'react';

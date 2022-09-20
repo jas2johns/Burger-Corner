@@ -1,0 +1,10 @@
+// the custom overwritten vars
+
+$primary: #702082;
+
+nav button {
+    color: $primary;
+}
+
+// goes at the bottom
+@import '~bootstrap/scss/bootstrap.scss'; 
