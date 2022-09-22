@@ -1,5 +1,6 @@
 import styles from "../styles/Menu.module.css";
 import MenuItem from "../components/MenuItem";
+import Image from "next/image";
 import data from "../data/menu";
 
 const Menu = () => {
@@ -9,8 +10,9 @@ const Menu = () => {
 							<Image
 								src="/menu.jpg"
 								alt="table with people eating around it"
-								opacity="0.65"
-								//layout="fill"
+								layout="fill"
+								opacity="0.45"
+								max-height="500px"
 								min-height= "500px"
 
 								/* Create the parallax scrolling effect */
