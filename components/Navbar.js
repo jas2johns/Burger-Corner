@@ -6,7 +6,7 @@ const Navbar = () => {
 
 	return (
 		<nav
-			className={`navbar navbar-expand-lg navbar sticky-top  ${
+			className={`navbar navbar-expand-lg navbar sticky-top ${
 				darkModeEnabled === true ? "navbar-dark bg-dark" : "bg-light"
 			}`}
 		>

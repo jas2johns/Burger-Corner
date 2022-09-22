@@ -14,13 +14,25 @@ export default function Home() {
 					<link rel="icon" href="/favicon.ico" />
 				</Head>
 
-				<main>{/* 
+				<main>
+					{
+						/* 
 				content
 				content
 				content
 				content
 			
-			*/}</main>
+			*/
+						<div className="home1">
+							<Image
+								
+								src="/home1.jpg"
+								alt="Burger and fries on a serving board"
+								layout="fill"
+							/>
+						</div>
+					}
+				</main>
 
 				<footer />
 			</div>
