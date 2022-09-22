@@ -6,7 +6,7 @@ const Navbar = () => {
 
 	return (
 		<nav
-			className={`navbar navbar-expand-lg ${
+			className={`navbar navbar-expand-lg navbar sticky-top  ${
 				darkModeEnabled === true ? "navbar-dark bg-dark" : "bg-light"
 			}`}
 		>
@@ -33,12 +33,12 @@ const Navbar = () => {
 					<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 						<li className="nav-item">
 							<Link href="/menu">
-								<a className="nav-link">Menu!</a>
+								<a className="nav-link">Menu</a>
 							</Link>
 						</li>
 						<li className="nav-item">
 							<Link href="/shoppingCart">
-								<a className="nav-link">My Cart!</a>
+								<a className="nav-link">My Cart</a>
 							</Link>
 						</li>
 						<li className="nav-item">
