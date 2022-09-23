@@ -6,21 +6,14 @@ import data from "../data/menu";
 const Menu = () => {
 	return (
 		<>
-			<div>
-							<Image
-								src="/menu.jpg"
-								alt="table with people eating around it"
-								layout="fill"
-								opacity="0.45"
-								max-height="500px"
-								min-height= "500px"
-
-								/* Create the parallax scrolling effect */
-								background-attachment= "fixed"
-								background-position= "center"
-								background-repeat= "no-repeat"
-								background-size= "cover"
-							/>
+			<div className={styles["menu"]}>
+				<Image
+					src="/menu.jpg"
+					alt="table with people eating around it"
+					className={styles["menu-background"]}
+					layout="fill"
+					objectFit="fill"
+				/>
 				<header>
 					<h1>Menu</h1>
 				</header>

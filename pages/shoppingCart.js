@@ -1,13 +1,15 @@
 import { useEffect, useState, useContext } from "react";
-import { useShoppingCart } from '../context/ShoppingCartContext';
+import { useShoppingCart } from "../context/ShoppingCartContext";
 
 const ShoppingCart = () => {
-	const { cartItems,
+	const {
+		cartItems,
 		getCartItems,
 		getItemQuantity,
 		increaseCartQuantity,
 		decreaseCartQuantity,
-		removeFromCart } = useShoppingCart();
+		removeFromCart,
+	} = useShoppingCart();
 	//const [cartItems, setCartItems] = useState([]);
 	//useEffect(() => {
 	//	const items = getCartItems()
@@ -27,30 +29,43 @@ const ShoppingCart = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{cartItems.map(i =>
+						{cartItems.map((i) => (
 							<tr key={i.menuItem.id}>
+								<td>{i.menuItem.description}</td>
+								<td>{i.quantity}</td>
 								<td>
-
-									{i.menuItem.description}
+									<button
+										onClick={() =>
+											increaseCartQuantity(i.menuItem)
+										}
+									>
+										increase
+									</button>
 								</td>
 								<td>
-									{i.quantity}
+									<button
+										onClick={() =>
+											decreaseCartQuantity(i.menuItem)
+										}
+									>
+										decrease
+									</button>
 								</td>
 								<td>
-									<button onClick={() => increaseCartQuantity(i.menuItem)}>increase</button>
-								</td>
-								<td>
-									<button onClick={() => decreaseCartQuantity(i.menuItem)}>decrease</button>
-								</td>
-								<td>
-									<button onClick={() => removeFromCart(i.menuItem)}>Remove</button>
+									<button
+										onClick={() =>
+											removeFromCart(i.menuItem)
+										}
+									>
+										Remove
+									</button>
 								</td>
 							</tr>
-						)}
+						))}
 					</tbody>
 				</table>
 			</div>
-			<button>Checkout</button>
+			<button className="btn btn-primary">Checkout</button>
 		</>
 	);
 };

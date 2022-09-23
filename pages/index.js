@@ -1,9 +1,8 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-import styles from '../styles/Home.module.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { ShoppingCartProvider } from '../context/ShoppingCartContext';
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import styles from "../styles/Home.module.css";
+import { ShoppingCartProvider } from "../context/ShoppingCartContext";
 
 export default function Home() {
 	return (
@@ -25,7 +24,6 @@ export default function Home() {
 			*/
 						<div className="home1">
 							<Image
-								
 								src="/home1.jpg"
 								alt="Burger and fries on a serving board"
 								layout="fill"

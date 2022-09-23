@@ -30,7 +30,7 @@ const Navbar = () => {
 					<Link href="/">
 						<a className="navbar-brand">Burger Corner</a>
 					</Link>
-					<ul className="navbar-nav me-auto mb-2 mb-lg-0">
+					<ul className="navbar-nav mb-2 mb-lg-0 d-flex justify-content-evenly flex-fill">
 						<li className="nav-item">
 							<Link href="/menu">
 								<a className="nav-link">Menu</a>
@@ -52,6 +52,7 @@ const Navbar = () => {
 							</Link>
 						</li>
 					</ul>
+
 					<div className="form-check form-switch">
 						<input
 							checked={darkModeEnabled}

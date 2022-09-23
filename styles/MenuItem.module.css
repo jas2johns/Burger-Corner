@@ -1,6 +1,5 @@
-.MenuItem {
-	display: grid;
-	place-items: center;
+.menu-item {
+	position: relative;
 }
 .img {
 	max-width: 250px;
