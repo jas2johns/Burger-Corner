@@ -5,17 +5,19 @@ import Navbar from "../components/Navbar";
 import { useEffect } from "react";
 import { ShoppingCartProvider } from "../context/ShoppingCartContext";
 import { ThemeProvider } from "../context/ThemeContext";
+import ThemeWrapper from "../components/ThemeWrapper";
+
 function MyApp({ Component, pageProps }) {
-	useEffect(() => {
+	+useEffect(() => {
 		import("bootstrap/dist/js/bootstrap");
 	}, []);
 	return (
 		<ThemeProvider>
 			<ShoppingCartProvider>
 				<Navbar />
-				<div className="container">
+				<ThemeWrapper>
 					<Component {...pageProps} />
-				</div>
+				</ThemeWrapper>
 			</ShoppingCartProvider>
 		</ThemeProvider>
 	);
