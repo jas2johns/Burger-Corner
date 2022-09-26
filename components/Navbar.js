@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useTheme } from "../context/ThemeContext";
+import ShoppingBagOutlinedIcon from "@mui/icons-material";
 
 const Navbar = () => {
 	const { darkModeEnabled, setDarkModeEnabled } = useTheme();
