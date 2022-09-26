@@ -1,2 +1,8 @@
 .item-container {
+    align: center;
+}
+.Image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

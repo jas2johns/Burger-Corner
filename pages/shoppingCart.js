@@ -1,7 +1,5 @@
 import { useEffect, useState, useContext } from "react";
 import { useShoppingCart } from "../context/ShoppingCartContext";
-
-//added
 import { Remove, DeleteOutline, Add } from "@mui/icons-material";
 
 const ShoppingCart = () => {
@@ -37,6 +35,16 @@ const ShoppingCart = () => {
 								<td>{i.menuItem.description}</td>
 								<td>{i.quantity}</td>
 								<td>
+								<button
+									className="btn btn-outline-success"
+									onClick={() =>
+									decreaseCartQuantity(i.menuItem)
+									}
+									>
+										<Remove />
+									</button>
+								</td>
+								<td>
 									<button
 										className="btn btn-outline-success"
 										onClick={() =>
@@ -44,16 +52,6 @@ const ShoppingCart = () => {
 										}
 									>
 										<Add />
-									</button>
-								</td>
-								<td>
-									<button
-										className="btn btn-outline-success"
-										onClick={() =>
-											decreaseCartQuantity(i.menuItem)
-										}
-									>
-										<Remove />
 									</button>
 								</td>
 								<td>

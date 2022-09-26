@@ -34,7 +34,7 @@ const ItemDetail = () => {
 			<h3>Item Description</h3>
 			<p>{item?.description}</p>
 
-			<button onClick={() => addToCart(item)}>Add to Cart</button>
+			<button className="btn" onClick={() => addToCart(item)}>Add to Cart</button>
 		</div>
 	);
 };

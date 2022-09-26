@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useTheme } from "../context/ThemeContext";
-import ShoppingBagOutlinedIcon from "@mui/icons-material";
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 
 const Navbar = () => {
 	const { darkModeEnabled, setDarkModeEnabled } = useTheme();
@@ -39,7 +39,10 @@ const Navbar = () => {
 						</li>
 						<li className="nav-item">
 							<Link href="/shoppingCart">
-								<a className="nav-link">My Cart</a>
+								<a className="nav-link">
+									<ShoppingBagOutlinedIcon/>
+								My Cart
+								</a>
 							</Link>
 						</li>
 						<li className="nav-item">
