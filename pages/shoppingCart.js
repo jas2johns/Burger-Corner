@@ -2,12 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 
 //added
-import Icon from '@mui/material/Icon';
-import {
-	RemoveIcon,
-	AddIcon,
-	DeleteOutlineIcon,
-} from "@mui/icons-material";
+import { Remove, DeleteOutline, Add } from "@mui/icons-material";
 
 const ShoppingCart = () => {
 	const {
@@ -48,7 +43,7 @@ const ShoppingCart = () => {
 											increaseCartQuantity(i.menuItem)
 										}
 									>
-										increase
+										<Add />
 									</button>
 								</td>
 								<td>
@@ -58,7 +53,7 @@ const ShoppingCart = () => {
 											decreaseCartQuantity(i.menuItem)
 										}
 									>
-										decrease
+										<Remove />
 									</button>
 								</td>
 								<td>
@@ -68,7 +63,7 @@ const ShoppingCart = () => {
 											removeFromCart(i.menuItem)
 										}
 									>
-										<RemoveIcon/>
+										<DeleteOutline />
 									</button>
 								</td>
 							</tr>
