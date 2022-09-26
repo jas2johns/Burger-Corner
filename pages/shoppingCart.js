@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { useShoppingCart } from "../context/ShoppingCartContext";
+import {RemoveIcon, AddIcon, DeleteOutlineIcon, ShoppingBagOutlinedIcon} from '@mui/icons-material/Remove';
 
 const ShoppingCart = () => {
 	const {
@@ -18,13 +19,13 @@ const ShoppingCart = () => {
 
 	return (
 		<>
-			<h1>Your Cart</h1>
+			<h1>Your Order</h1>
 			<div className="item-list">
-				<table>
+				<table className="table">
 					<thead>
 						<tr>
-							<th>Items</th>
-							<th>Quantity</th>
+							<th scope="col">Your Bag</th>
+							<th scope="col">Quantity</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -34,7 +35,7 @@ const ShoppingCart = () => {
 								<td>{i.menuItem.description}</td>
 								<td>{i.quantity}</td>
 								<td>
-									<button
+									<button className="btn btn-info"
 										onClick={() =>
 											increaseCartQuantity(i.menuItem)
 										}
@@ -43,7 +44,7 @@ const ShoppingCart = () => {
 									</button>
 								</td>
 								<td>
-									<button
+									<button className="btn btn-info"
 										onClick={() =>
 											decreaseCartQuantity(i.menuItem)
 										}
@@ -52,7 +53,7 @@ const ShoppingCart = () => {
 									</button>
 								</td>
 								<td>
-									<button
+									<button className="btn btn-outline-danger"
 										onClick={() =>
 											removeFromCart(i.menuItem)
 										}

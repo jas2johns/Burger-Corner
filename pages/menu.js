@@ -13,6 +13,7 @@ const Menu = () => {
 					className={styles["menu-background"]}
 					layout="fill"
 					objectFit="fill"
+					object-position= "center"
 				/>
 				<header>
 					<h1>Menu</h1>

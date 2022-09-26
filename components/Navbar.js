@@ -24,7 +24,7 @@ const Navbar = () => {
 					<span className="navbar-toggler-icon" />
 				</button>
 				<div
-					className="collapse navbar-collapse"
+					className="collapse navbar-collapse mx-auto nav nav-pills nav-stacked"
 					id="navbarTogglerDemo01"
 				>
 					<Link href="/">
