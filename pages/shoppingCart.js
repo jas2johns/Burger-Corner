@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { Remove, DeleteOutline, Add } from "@mui/icons-material";
+import Image from "next/Image";
 
 const ShoppingCart = () => {
 	const {
@@ -19,12 +20,12 @@ const ShoppingCart = () => {
 
 	return (
 		<>
-			<h1>Your Order</h1>
+			<h1>Your Bag </h1>
 			<div className="item-list">
 				<table className="table">
 					<thead>
 						<tr>
-							<th scope="col">Your Bag</th>
+							<th scope="col">Your Order</th>
 							<th scope="col">Quantity</th>
 							<th></th>
 						</tr>
@@ -68,6 +69,14 @@ const ShoppingCart = () => {
 						))}
 					</tbody>
 				</table>
+
+				<Image
+					src="https://images.pexels.com/photos/6956890/pexels-photo-6956890.jpeg"
+					alt="brown paper bag"
+					layout="fill"
+					objectFit="contain"
+
+				/>
 			</div>
 			<button className="btn btn-primary">Checkout</button>
 		</>

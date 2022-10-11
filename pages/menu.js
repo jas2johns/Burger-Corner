@@ -2,9 +2,6 @@ import styles from "../styles/Menu.module.css";
 import MenuItem from "../components/MenuItem";
 import Image from "next/image";
 import data from "../data/menu";
-// new
-import menu from './menu.jpg';
-import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
 /* 
       <Parallax pages={1} ref={ref}>
