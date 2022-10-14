@@ -70,12 +70,12 @@ const ShoppingCart = () => {
 					</tbody>
 				</table>
 
-				<Image
+				{/* <Image
 					src="https://images.pexels.com/photos/6956890/pexels-photo-6956890.jpeg"
 					alt="brown paper bag"
 					layout="fill"
 					objectFit="contain"
-				/>
+				/> */}
 			</div>
 			<button className="btn btn-primary">Checkout</button>
 		</>

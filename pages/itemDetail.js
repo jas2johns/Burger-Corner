@@ -1,25 +1,30 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { useShoppingCart } from '../context/ShoppingCartContext';
+import { useShoppingCart } from "../context/ShoppingCartContext";
 import Image from "next/image";
-import data from "../data/menu";
+import { allDayMenu } from "../data/menu";
 import styles from "../styles/ItemDetail.module.css";
 
 const ItemDetail = () => {
-	const {
-		increaseCartQuantity
-	} = useShoppingCart();
+	const { increaseCartQuantity } = useShoppingCart();
 	const router = useRouter();
 	const [item, setItem] = useState();
 
 	useEffect(() => {
 		if (router.isReady) {
 			const itemId = router.query.itemId;
-			const menuItem = data.menuItems.find(
-				(m) => m.id == parseInt(itemId)
-			);
 
-			setItem(menuItem);
+			for (let i = 0; i < allDayMenu.categories.length; i++) {
+				const category = allDayMenu.categories[i];
+
+				for (let j = 0; j < category.items.length; j++) {
+					const menuItem = allDayMenu.categories[i].items[j];
+
+					if (menuItem.id === parseInt(itemId)) {
+						setItem(menuItem);
+					}
+				}
+			}
 		}
 	}, [router.isReady]);
 
@@ -34,7 +39,9 @@ const ItemDetail = () => {
 			<h3>Item Description</h3>
 			<p>{item?.description}</p>
 
-			<button className="btn" onClick={() => addToCart(item)}>Add to Cart</button>
+			<button className="btn" onClick={() => addToCart(item)}>
+				Add to Cart
+			</button>
 		</div>
 	);
 };
