@@ -36,11 +36,11 @@ const ShoppingCart = () => {
 								<td>{i.menuItem.description}</td>
 								<td>{i.quantity}</td>
 								<td>
-								<button
-									className="btn btn-outline-success"
-									onClick={() =>
-									decreaseCartQuantity(i.menuItem)
-									}
+									<button
+										className="btn btn-outline-success"
+										onClick={() =>
+											decreaseCartQuantity(i.menuItem)
+										}
 									>
 										<Remove />
 									</button>
@@ -75,7 +75,6 @@ const ShoppingCart = () => {
 					alt="brown paper bag"
 					layout="fill"
 					objectFit="contain"
-
 				/>
 			</div>
 			<button className="btn btn-primary">Checkout</button>

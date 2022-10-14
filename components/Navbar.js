@@ -28,7 +28,7 @@ const Navbar = () => {
 					className="collapse navbar-collapse nav nav-stacked"
 					id="navbarTogglerDemo01"
 				>
-					<div className="mx-auto d-flex flex-column flex-md-row flex-fill align-items-center">
+					<div className="mx-auto d-flex flex-column flex-lg-row flex-fill align-items-center">
 						<Link href="/">
 							<a className="navbar-brand m0">Burger Corner</a>
 						</Link>
