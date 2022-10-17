@@ -33,12 +33,14 @@ const renderCategories = () => {
 
 const renderMenuItems = (menuItems) => {
 	return menuItems.map((menuItem) => (
-		<MenuItem
-			id={menuItem.id}
-			key={menuItem.id}
-			description={menuItem.description}
-			image={menuItem.image}
-		/>
+			<div className={styles["grid-even-columns"]}>
+				<MenuItem
+					id={menuItem.id}
+					key={menuItem.id}
+					description={menuItem.description}
+					image={menuItem.image}
+				/>
+			</div>
 	));
 };
 
@@ -46,14 +48,14 @@ const Menu = () => {
 	return (
 		<>
 			<div className={styles["menu"]}>
-				<Image
+				{/* <Image
 					src="/menu.jpg"
 					alt="table with people eating around it"
 					className={styles["menu-background"]}
 					layout="fill"
 					objectFit="fill"
 					object-position="center"
-				/>
+				/> */}
 				<header>
 					<h1>Menu</h1>
 				</header>

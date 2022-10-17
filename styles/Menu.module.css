@@ -23,7 +23,34 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr;
-	background-color: rgba(255, 255, 255, 0.523);
+	background-color: rgba(255, 255, 255, .3);
+
+	/*new*/
+	/* ok so the issue is now i need a div or somethinmg to layer my parrallaz img underneath
+		and stiull have an opaque glass effect on top for my menu items
+	*/
+	background-image: url(/menu.jpg);
+	z-index: -1;
+	opacity: 0.45;
+
+	/* Set a specific height */
+	min-height: 100vh; 
+  
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/* new code */
+
+/* still need to align content items */
+
+.grid-even-columns {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(2, 1fr);
 }
 
 .menu-container > div {
@@ -38,3 +65,4 @@
 	z-index: -1;
 	opacity: 0.45;
 }
+
