@@ -16,7 +16,11 @@ const renderCategories = () => {
 
 const renderMenuItems = (menuItems) => {
 	return menuItems.map((menuItem) => (
-			<div className={styles["grid-even-columns"]}>
+
+			// being carefull		
+			// <div className={styles["grid-even-columns"]}>
+
+			<div>
 				<MenuItem
 					id={menuItem.id}
 					key={menuItem.id}
@@ -32,6 +36,7 @@ const Menu = () => {
 		<>
 			<div className={styles["menu"]}>
 				<header>
+					{/* needs illumination */}
 					<h1>Menu</h1>
 				</header>
 				<main className={styles["menu-container"]}>
