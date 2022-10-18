@@ -5,7 +5,7 @@ const ThemeWrapper = ({ children }) => {
 
 	return (
 		<div
-			className={`container ${
+			className={`container-fluid ${
 				darkModeEnabled === true ? "body-dark" : ""
 			}`}
 		>

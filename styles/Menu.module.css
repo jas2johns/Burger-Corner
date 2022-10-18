@@ -5,33 +5,13 @@
 }
 
 .menu {
-	/*position: relative;*/
-	/* Set a specific height */
-  min-height: 500px;
-
-  /* Full height */
-  height: 100%; 
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.menu-container {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 1fr 1fr 1fr;
-	background-color: rgba(255, 255, 255, .3);
-
 	/*new*/
 	/* ok so the issue is now i need a div or somethinmg to layer my parrallaz img underneath
 		and stiull have an opaque glass effect on top for my menu items
 	*/
 	background-image: url(/menu.jpg);
 	z-index: -1;
-	opacity: 0.45;
+	opacity: 0.7;
 
 	/* Set a specific height */
 	min-height: 100vh; 
@@ -41,6 +21,16 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	
+}
+
+.menu-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	background-color: rgba(255, 255, 255, .3);
+
+
 }
 
 /* new code */
@@ -57,12 +47,6 @@
 	padding: 85px;
 	min-width: 125px;
 	min-height: 125px;
-	border: gold transparent;
 	gap: 1em;
-}
-
-.menu-background {
-	z-index: -1;
-	opacity: 0.45;
 }
 
