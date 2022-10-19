@@ -1,0 +1,13 @@
+.img {
+
+    background-image: url("https://images.pexels.com/photos/3182826/pexels-photo-3182826.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+	
+		/* Set a specific height */
+	min-height: 100vh; 
+  
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}

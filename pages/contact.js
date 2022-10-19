@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import styles from "../styles/Cart.module.css";
 
 export default function Home() {
 	return (
@@ -11,7 +12,7 @@ export default function Home() {
 			</Head>
 
 			<main>
-				<div>
+				<div className={styles["img"]}>
 					<h1>Contact us at Burger Corner</h1>
 
 					<p>We know you like our burgers, now what else can we for you?</p>
