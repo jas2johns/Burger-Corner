@@ -30,7 +30,7 @@ const ShoppingCart = () => {
 	};
 
 	return (
-		<div clasName={styles["cartBackground"]}>
+		<div className={styles["cartBackground"]}>
 			{isSubmitted && <ThankYouComponent />}
 			{!isSubmitted && (
 				<>
