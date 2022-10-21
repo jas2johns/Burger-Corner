@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { useTheme } from "../context/ThemeContext";
 import { Remove, DeleteOutline, Add } from "@mui/icons-material";
+import styles from "../styles/Cart.module.css";
 
 const ThankYouComponent = () => {
 	return <div>Thanks for shopping with us</div>;
@@ -29,7 +30,7 @@ const ShoppingCart = () => {
 	};
 
 	return (
-		<>
+		<div clasName={styles["cartBackground"]}>
 			{isSubmitted && <ThankYouComponent />}
 			{!isSubmitted && (
 				<>
@@ -90,20 +91,13 @@ const ShoppingCart = () => {
 								))}
 							</tbody>
 						</table>
-
-						{/* <Image
-					src="https://images.pexels.com/photos/6956890/pexels-photo-6956890.jpeg"
-					alt="brown paper bag"
-					layout="fill"
-					objectFit="contain"
-				/> */}
 					</div>
 					<button onClick={handleClick} className="btn btn-primary">
 						Checkout
 					</button>
 				</>
 			)}
-		</>
+		</div>
 	);
 };
 
