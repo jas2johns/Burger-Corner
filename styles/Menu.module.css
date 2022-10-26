@@ -25,12 +25,13 @@
 	background-color: rgba(255, 255, 255, 0.3);
 	border-radius: 25px;
 	/* width: max(20vw, 100px);  */
-	box-shadow: 5px 10px #888888;
+	/* box-shadow: 5px 10px #888888; */
 
 	display: flex;
 	/* flex-direction: column; */
 	align-items: center;
-  	justify-content: center;
+	justify-content: center;
+	padding: 2rem 0;
 }
 .menu-container {
 	background-color: rgba(255, 255, 255, 0.3);
@@ -42,7 +43,7 @@
 	/* here for individual menu items */
 	/* background-color: #ebd5b9; */
 	border-radius: 25px;
-	border: .25rem solid #ebd5b9;
+	border: 0.25rem solid #ebd5b9;
 	/* padding: 20px;
 	width: 200px;
 	height: 150px; */

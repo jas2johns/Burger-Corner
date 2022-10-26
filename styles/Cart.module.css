@@ -1,5 +1,5 @@
 .cartBackground {
-    background-image: url("https://images.pexels.com/photos/6956890/pexels-photo-6956890.jpeg");
+	background-image: url("https://images.pexels.com/photos/6956890/pexels-photo-6956890.jpeg");
 	z-index: -1;
 
 	/* Set a specific height */
@@ -10,4 +10,7 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+
+.please-add-container {
 }

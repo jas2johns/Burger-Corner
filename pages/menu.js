@@ -1,12 +1,13 @@
 import styles from "../styles/Menu.module.css";
 import MenuItem from "../components/MenuItem";
+import { useRouter } from "next/router";
 import { allDayMenu } from "../data/menu";
 
 const renderCategories = () => {
 	return allDayMenu.categories.map((category) => {
 		return (
 			<>
-				<h1>{category.name}</h1>
+				<h2 className="text-center">{category.name}</h2>
 				<div className={styles["menu-category"]} key={category.name}>
 					{renderMenuItems(category.items)}
 				</div>
@@ -21,11 +22,7 @@ const renderMenuItems = (menuItems) => {
 		// <div className={styles["grid-even-columns"]}>
 
 		<div key={menuItem.id}>
-			<MenuItem
-				id={menuItem.id}
-				description={menuItem.description}
-				image={menuItem.image}
-			/>
+			<MenuItem addToCartMode="navigate" menuItem={menuItem} />
 		</div>
 	));
 };
@@ -36,7 +33,7 @@ const Menu = () => {
 			<div className={styles["menu"]}>
 				<header>
 					{/* needs illumination */}
-				<h1 className={styles["menuTitle"]}>Menu</h1>
+					<h1 className={styles["menuTitle"]}>Menu</h1>
 				</header>
 				<main className={styles["menu-container"]}>
 					{renderCategories()}

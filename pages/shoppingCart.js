@@ -8,6 +8,14 @@ const ThankYouComponent = () => {
 	return <div>Thanks for shopping with us</div>;
 };
 
+const PleaseAddComponent = () => {
+	return (
+		<div className={styles["please-add-container"]}>
+			Your cart is empty! Please order something!{" "}
+		</div>
+	);
+};
+
 const ShoppingCart = () => {
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const {
@@ -31,8 +39,10 @@ const ShoppingCart = () => {
 
 	return (
 		<div className={styles["cartBackground"]}>
-			{isSubmitted && <ThankYouComponent />}
-			{!isSubmitted && (
+			{cartItems.length === 0 && <PleaseAddComponent />}
+
+			{cartItems.length > 0 && isSubmitted && <ThankYouComponent />}
+			{!isSubmitted && cartItems.length > 0 && (
 				<>
 					<h1>Your Bag </h1>
 					<div className="item-list">
