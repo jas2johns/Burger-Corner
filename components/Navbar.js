@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { useTheme } from "../context/ThemeContext";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import { useUser } from "@auth0/nextjs-auth0";
 
 const Navbar = () => {
 	const { darkModeEnabled, setDarkModeEnabled } = useTheme();
+	const userInfo = useUser();
+	console.log("user", userInfo?.user);
 
 	return (
 		<nav
@@ -55,6 +58,17 @@ const Navbar = () => {
 								<Link href="/contact">
 									<a className="nav-link">Contact Page</a>
 								</Link>
+							</li>
+							<li className="nav-item">
+								{userInfo.user && (
+									<>
+										Hi, {userInfo.user?.given_name}! &nbsp;
+										<a href="/api/auth/logout">Logout</a>
+									</>
+								)}
+								{!userInfo.user && (
+									<a href="/api/auth/login">Login</a>
+								)}
 							</li>
 						</ul>
 
