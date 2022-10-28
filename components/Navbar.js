@@ -63,11 +63,15 @@ const Navbar = () => {
 								{userInfo.user && (
 									<>
 										Hi, {userInfo.user?.given_name}! &nbsp;
-										<a href="/api/auth/logout">Logout</a>
+										<Link href="/api/auth/logout">
+											<a>Logout</a>
+										</Link>
 									</>
 								)}
 								{!userInfo.user && (
-									<a href="/api/auth/login">Login</a>
+									<Link href="/api/auth/login">
+										<a>Login</a>
+									</Link>
 								)}
 							</li>
 						</ul>
