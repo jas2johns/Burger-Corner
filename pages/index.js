@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import styles from "../styles/Home.module.css";
 import { ShoppingCartProvider } from "../context/ShoppingCartContext";
 
 export default function Home() {
@@ -13,22 +14,14 @@ export default function Home() {
 				</Head>
 
 				<main>
-					{
-						/* 
-				content
-				content
-				content
-				content
-			
-			*/
-						<div className="home1">
-							<Image
-								src="/home1.jpg"
-								alt="Burger and fries on a serving board"
-								layout="fill"
-							/>
+					
+						<div className={styles["home"]}>
+							<div>
+
+								
+							</div>
 						</div>
-					}
+					
 				</main>
 
 				<footer />
