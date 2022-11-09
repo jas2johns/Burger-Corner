@@ -28,9 +28,11 @@ const ItemDetail = () => {
 	}, [router.isReady]);
 
 	return (
-		<div className={styles["item-container"]}>
-			<h1>The Detail Page</h1>
-			{item && <MenuItem addToCartMode="quantity" menuItem={item} />}
+		<div className={styles["body"]}>
+			<div className={styles["item-container"]}>
+				<h1>The Detail Page</h1>
+				{item && <MenuItem addToCartMode="quantity" menuItem={item} />}
+			</div>
 		</div>
 	);
 };

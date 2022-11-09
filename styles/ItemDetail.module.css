@@ -1,13 +1,15 @@
 .item-container {
-    align: center;
-}
-
-/*
-
-.Image{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    margin: auto 3rem auto;
+    
 }
 
-*/
+.body {
+    background-image: url('https://images.pexels.com/photos/616484/pexels-photo-616484.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}
+
+/* having trouble filling the background properly */
