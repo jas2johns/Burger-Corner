@@ -8,7 +8,6 @@ export const allDayMenu = {
 					description:
 						'The Go 2 classic Single Mustard Grilled Patty, "white" American Cheese, fresh shredded lettuce, tomato.',
 					image: "Classic.svg",
-					backgroundColor: "#F0FF00",
 				},
 				{
 					id: 2,
@@ -21,7 +20,6 @@ export const allDayMenu = {
 					description:
 						"The Hawaiian burger; BBQ Grilled burger 6oz, Chopped Grilled onions, grilled pineapple slice, Monterey jack crisp, and a choice of our house teriyaki Sauce or BBQ sauce.",
 					image: "Hawaiin.svg",
-					backgroundColor: "#FF00DB",
 				},
 				{
 					id: 4,
