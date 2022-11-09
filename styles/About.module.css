@@ -1,5 +1,5 @@
 .about {
-    background-image: url('https://images.pexels.com/photos/2267538/pexels-photo-2267538.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+	background-image: url('https://images.pexels.com/photos/2267538/pexels-photo-2267538.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
 	z-index: -1;
 
 	/* Set a specific height */
@@ -10,4 +10,22 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+.h1 {
+	gap: 4rem;
+}
+.about_content {
+	/* From https://css.glass */
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	gap: .5rem;
+	padding: 3rem;
+	margin: 3.5rem;
+
+	display: grid;
+	place-items:  center;
 }
