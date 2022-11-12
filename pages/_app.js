@@ -6,8 +6,13 @@ import { ShoppingCartProvider } from "../context/ShoppingCartContext";
 import { ThemeProvider } from "../context/ThemeContext";
 import ThemeWrapper from "../components/ThemeWrapper";
 import { UserProvider } from "@auth0/nextjs-auth0";
+import { useEffect } from "react";
 
 function MyApp({ Component, pageProps }) {
+	useEffect(() => {
+		import("bootstrap/dist/js/bootstrap");
+	}, []);
+
 	return (
 		<UserProvider>
 			<ThemeProvider>
