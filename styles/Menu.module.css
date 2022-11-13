@@ -5,10 +5,6 @@
 }
 
 .menu {
-	/*new*/
-	/* ok so the issue is now i need a div or something to layer my parrallaz img underneath
-		and still have an opaque glass effect on top for my menu items
-	*/
 	background-image: url(/menu.jpg);
 	z-index: -1;
 
@@ -43,7 +39,7 @@
 	/* here for individual menu items */
 	/* background-color: #ebd5b9; */
 	border-radius: 25px;
-	border: 0.25rem solid #ebd5b9;
+	border: none;
 	/* padding: 20px;
 	width: 200px;
 	height: 150px; */
