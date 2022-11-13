@@ -33,9 +33,11 @@ const Menu = () => {
 			<div className={styles["menu"]}>
 				<header>
 					{/* needs illumination */}
-					<h1 className={styles["menuTitle"]}>Menu</h1>
+					<h1 className={`${styles["menuTitle"]} glass my-0`}>
+						Menu
+					</h1>
 				</header>
-				<main className={styles["menu-container"]}>
+				<main className={`${styles["menu-container"]} glass`}>
 					{renderCategories()}
 				</main>
 			</div>

@@ -1,15 +1,15 @@
 .item-container {
-    display: flex;
-    flex-direction: column;
-    margin: auto 3rem auto;
-    
+	display: flex;
+	flex-direction: column;
+	margin: auto 3rem auto;
 }
 
 .body {
-    background-image: url('https://images.pexels.com/photos/616484/pexels-photo-616484.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center; 
-}
+	background-image: url("https://images.pexels.com/photos/616484/pexels-photo-616484.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
 
-/* having trouble filling the background properly */
+	min-height: 94vh;
+	min-width: 80vw;
+}
