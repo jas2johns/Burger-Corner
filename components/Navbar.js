@@ -28,10 +28,14 @@ const Navbar = () => {
 				>
 					<span className="navbar-toggler-icon" />
 				</button>
-				<img
-					className={`${styles["logo"]}`}
-					src="/Burger_Corner__1_-removebg-preview.png"
-				/>
+				<Link className={`${styles["logo"]}`} href="/">
+					<a>
+						<img
+							className={`${styles["logo"]}`}
+							src="/Burger_Corner__1_-removebg-preview.png"
+						/>
+					</a>
+				</Link>
 				<div
 					className="collapse navbar-collapse nav nav-stacked"
 					id="navbarTogglerDemo01"
