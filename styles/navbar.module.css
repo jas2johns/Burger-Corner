@@ -7,3 +7,23 @@
 .nav a:hover{
     color: white;
 }
+
+.logo {
+	max-width: 32px;
+	position: sticky;
+	/* align-items: center; */
+	/* height: 5vh; */
+	/* left: 47vw; */
+	display: flexbox;
+	/* flex-flow: row wrap; */
+	flex-direction: column;
+	flex-basis: auto;
+	right: 48vw;
+	/* align-items: center; */
+}
+
+@media (min-width: 800px) {
+	.logo {
+		display: none;
+	}
+}

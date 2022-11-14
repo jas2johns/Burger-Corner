@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useTheme } from "../context/ThemeContext";
+import styles from "../styles/navbar.module.css";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { useUser } from "@auth0/nextjs-auth0";
 
@@ -27,6 +28,10 @@ const Navbar = () => {
 				>
 					<span className="navbar-toggler-icon" />
 				</button>
+				<img
+					className={`${styles["logo"]}`}
+					src="/Burger_Corner__1_-removebg-preview.png"
+				/>
 				<div
 					className="collapse navbar-collapse nav nav-stacked"
 					id="navbarTogglerDemo01"
