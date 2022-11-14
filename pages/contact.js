@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles/Contact.module.css";
+import styles from "../styles/contact.module.css";
 
 export default function Home() {
 	return (
