@@ -13,7 +13,6 @@ export default function Home() {
 
 			<main>
 				<div className={styles["img"]}>
-					{/* test */}
 					<h1>Contact us at Burger Corner</h1>
 
 					<div className="glass">
