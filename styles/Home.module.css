@@ -11,3 +11,19 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
+.homeContent {
+	padding-top: 3rem;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.txt {
+	color: #FBFFFF;
+	text-shadow: repeat(3,5px) rgba(255, 255, 255, 0.671);
+
+}
