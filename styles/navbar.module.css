@@ -4,22 +4,14 @@
 	justify-content: space-between;
 	padding: 0.5rem;
 }
-.nav a:hover{
-    color: white;
+.nav a:hover {
+	color: white;
 }
 
 .logo {
 	max-width: 32px;
-	position: sticky;
-	/* align-items: center; */
-	/* height: 5vh; */
-	/* left: 10vw; */
-	display: flexbox;
-	/* flex-flow: row wrap; */
-	flex-direction: column;
-	flex-basis: auto;
-	right: 50vw;
-	/* align-items: center; */
+	position: relative;
+	right: 42vw;
 }
 
 @media (min-width: 800px) {
