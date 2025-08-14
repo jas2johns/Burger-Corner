@@ -1,13 +1,10 @@
-// the custom overwritten vars
-
-$primary: #702082;
-
-nav {
-    opacity: 0.85;
-}
-nav button {
-    color: $primary;
+/* Theme overrides via CSS variables (Bootstrap 5.2 supports this) */
+:root {
+  --bs-primary: #702082; /* replaces $primary */
 }
 
-// goes at the bottom
-@import 'bootstrap/scss/bootstrap.scss'; 
+/* Your custom styles */
+nav { opacity: 0.85; }
+nav button { color: var(--bs-primary); }
+
+/* No bootstrap SCSS import here */
