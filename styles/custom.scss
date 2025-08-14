@@ -1,10 +1,15 @@
-/* Theme overrides via CSS variables (Bootstrap 5.2 supports this) */
-:root {
-  --bs-primary: #702082; /* replaces $primary */
-}
+// 1) Your overrides BEFORE Bootstrap
+$primary: #702082;
 
-/* Your custom styles */
+// 2) Tiny rule to guarantee CSS is emitted (prevents "undefined" in loader chain)
+:root { --build-sentinel: 1; }
+
+// 3) Import Bootstrap pieces (no "~", no ".scss" extension)
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/bootstrap";
+
+// 4) Your styles (can use $primary, mixins, etc.)
 nav { opacity: 0.85; }
-nav button { color: var(--bs-primary); }
-
-/* No bootstrap SCSS import here */
+nav button { color: $primary; }
