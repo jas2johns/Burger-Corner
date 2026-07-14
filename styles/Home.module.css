@@ -1,29 +1,207 @@
+.page {
+	--home-navbar-height: 3.625rem;
+	box-sizing: border-box;
+	height: calc(100vh - var(--home-navbar-height));
+	background: #fff8ef;
+}
+
+.page main {
+	box-sizing: border-box;
+	height: 100%;
+}
+
 .home {
-    background-image: url('/home1.jpg');
-	z-index: -1;
-
-	/* Set a specific height */
-	min-height: 100vh;
-
-	/* Create the parallax scrolling effect */
-	background-attachment: fixed;
+	box-sizing: border-box;
+	position: relative;
+	isolation: isolate;
+	height: 100%;
+	background-image:
+		linear-gradient(90deg, rgba(14, 10, 7, 0.84) 0%, rgba(14, 10, 7, 0.62) 42%, rgba(14, 10, 7, 0.18) 100%),
+		url("/home1.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 
-.homeContent {
-	padding-top: 3rem;
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+.home::after {
+	box-sizing: border-box;
+	content: "";
+	position: absolute;
+	inset: auto 0 0;
+	z-index: -1;
+	height: 34%;
+	background: linear-gradient(0deg, rgba(14, 10, 7, 0.5), rgba(14, 10, 7, 0));
+	pointer-events: none;
+}
 
+.homeContent {
+	box-sizing: border-box;
+	width: min(1120px, calc(100% - 48px));
+	height: 100%;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	padding: clamp(4.5rem, 9vw, 8rem) 0 clamp(3rem, 7vw, 6rem);
+}
+
+.heroPanel {
+	box-sizing: border-box;
+	width: min(650px, 100%);
+	padding: clamp(1.5rem, 4vw, 3rem);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	border-radius: 8px;
+	background: rgba(17, 12, 9, 0.66);
+	box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
 }
 
 .txt {
-	color: #FBFFFF;
-	text-shadow: repeat(3,5px) rgba(255, 255, 255, 0.671);
+	color: #fffaf1;
+}
 
+.txt h2 {
+	max-width: 10ch;
+	margin: 0;
+	font-size: clamp(3.25rem, 8vw, 6.75rem);
+	font-weight: 800;
+	line-height: 0.92;
+	letter-spacing: 0;
+}
+
+.txt p {
+	max-width: 34rem;
+	margin: 1.4rem 0 0;
+	padding: 0;
+	color: rgba(255, 250, 241, 0.88);
+	font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+	line-height: 1.7;
+	text-align: left;
+}
+
+.ctaWrap {
+	display: flex;
+	align-items: center;
+	margin-top: 2rem;
+}
+
+.orderButton {
+	box-sizing: border-box;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 3.4rem;
+	padding: 0.95rem 2.35rem;
+	border: 2px solid #f4c430;
+	border-radius: 999px;
+	background: #f4c430;
+	color: #15100c;
+	font-size: 1rem;
+	font-weight: 800;
+	line-height: 1;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+	transition:
+		background-color 180ms ease,
+		border-color 180ms ease,
+		box-shadow 180ms ease,
+		color 180ms ease,
+		transform 180ms ease;
+}
+
+.orderButton:hover,
+.orderButton:focus {
+	border-color: #fff4cb;
+	background: #fff4cb;
+	color: #15100c;
+	transform: translateY(-2px);
+	box-shadow: 0 20px 42px rgba(0, 0, 0, 0.32);
+}
+
+.orderButton:focus-visible {
+	outline: 3px solid #ffffff;
+	outline-offset: 4px;
+}
+
+:global(.bg-dark) .page {
+	background: #12100e;
+}
+
+:global(.bg-dark) .heroPanel {
+	border-color: rgba(255, 255, 255, 0.14);
+	background: rgba(10, 9, 8, 0.74);
+	box-shadow: 0 24px 80px rgba(0, 0, 0, 0.44);
+}
+
+@media (max-width: 900px) {
+	.home {
+		background-image:
+			linear-gradient(180deg, rgba(14, 10, 7, 0.58) 0%, rgba(14, 10, 7, 0.82) 68%, rgba(14, 10, 7, 0.9) 100%),
+			url("/home1.jpg");
+		background-position: 58% center;
+	}
+
+	.homeContent {
+		width: min(100% - 32px, 720px);
+		align-items: flex-end;
+		padding-top: 9rem;
+	}
+
+	.heroPanel {
+		margin-top: auto;
+	}
+}
+
+@media (max-width: 560px) {
+	.page {
+		height: calc(100svh - var(--home-navbar-height));
+	}
+
+	.home {
+		background-position: 62% center;
+	}
+
+	.homeContent {
+		width: min(100% - 28px, 420px);
+		padding: 7rem 0 2rem;
+	}
+
+	.heroPanel {
+		padding: 1.25rem;
+	}
+
+	.txt h2 {
+		max-width: 9ch;
+		font-size: clamp(2.75rem, 16vw, 4.3rem);
+	}
+
+	.txt p {
+		margin-top: 1rem;
+		font-size: 1rem;
+		line-height: 1.6;
+	}
+
+	.txt br {
+		display: none;
+	}
+
+	.ctaWrap {
+		margin-top: 1.35rem;
+	}
+
+	.orderButton {
+		width: 100%;
+		min-height: 3.25rem;
+		padding-inline: 1.5rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.orderButton {
+		transition: none;
+	}
+
+	.orderButton:hover,
+	.orderButton:focus {
+		transform: none;
+	}
 }

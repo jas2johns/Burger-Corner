@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { ShoppingCartProvider } from "../context/ShoppingCartContext";
@@ -7,41 +6,34 @@ import { ShoppingCartProvider } from "../context/ShoppingCartContext";
 export default function Home() {
 	return (
 		<ShoppingCartProvider>
-			<div>
+			<div className={styles["page"]}>
 				<Head>
 					<title>Burger Corner</title>
 					<link rel="icon" href="/favicon.ico" />
 				</Head>
 
 				<main>
-					
-						<div className={styles["home"]}>
-							<div className={styles["homeContent"]}>
-							<div className="glass">
-									<div className={styles["txt"]}>
+					<section className={styles["home"]}>
+						<div className={styles["homeContent"]}>
+							<div className={styles["heroPanel"]}>
+								<div className={styles["txt"]}>
 									<h2>Welcome to Burger Corner!</h2>
 									<p>
-										Here at Burger Corner, we strive to make excellent burgers at 
-										a fair price.
-										<br/>
+										Here at Burger Corner, we strive to make excellent burgers at a
+										fair price.
+										<br />
 										Please try anything from our menu, I promise you wont regret it!
+									</p>
+								</div>
 
-									</p>							
+								<div className={styles["ctaWrap"]}>
+									<Link href="/menu">
+										<a className={styles["orderButton"]}>Order</a>
+									</Link>
 								</div>
 							</div>
-							<span>
-							<Link href="/menu">
-								<a>
-								<button type="button" className="btn btn-primary btn-lg">
-									<h3>Order</h3>
-								</button>
-								</a>
-							</Link>
-							</span>
-							</div>
-
 						</div>
-					
+					</section>
 				</main>
 
 				<footer />
