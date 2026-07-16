@@ -1,13 +1,12 @@
 import styles from "../styles/MenuItem.module.css";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { Button } from "react-bootstrap";
 import { useShoppingCart } from "../context/ShoppingCartContext";
+import { getMenuItemVisual } from "../data/menuImages";
 
 const MenuItem = (props) => {
-	console.log(props);
 	const { addToCartMode } = props;
-	const { description, image, id, backgroundColor } = props.menuItem;
+	const { description, name, price } = props.menuItem;
 
 	const { increaseCartQuantity } = useShoppingCart();
 	const router = useRouter();
@@ -24,21 +23,50 @@ const MenuItem = (props) => {
 		}
 	};
 
+	const isNavigateMode = addToCartMode === "navigate";
+	const actionLabel = isNavigateMode ? "View Item" : "Add to Cart";
+	const visual = getMenuItemVisual(props.menuItem);
+	const imageClassName = `${styles["item-image"]} ${
+		styles[
+			visual.kind === "photo"
+				? "productPhoto"
+				: "productIllustration"
+		]
+	}`;
+
 	return (
-		<>
-			<div
-				className={styles["menu-item"]}
-				style={{ backgroundColor: backgroundColor }}
-			>
-				<Image src={"/" + image} width="250" height="250" />
-				<br />
-				<Button className="button" onClick={handleAddToCart}>
-					Add to Cart
-				</Button>
-				<br />
-				<span>{description}</span>
+		<article className={styles["menu-item"]}>
+			<div className={styles["image-stage"]}>
+				<Image
+					alt={visual.alt}
+					className={imageClassName}
+					src={visual.src}
+					style={{
+						objectPosition: visual.position,
+						transform: `scale(${visual.scale})`,
+						transformOrigin: visual.transformOrigin,
+					}}
+					width={360}
+					height={260}
+				/>
 			</div>
-		</>
+
+			<div className={styles["item-content"]}>
+				<div className={styles["item-copy"]}>
+					{name && <h3>{name}</h3>}
+					{price && <p className={styles["price"]}>{price}</p>}
+					<p className={styles["description"]}>{description}</p>
+				</div>
+
+				<button
+					className={styles["action"]}
+					onClick={handleAddToCart}
+					type="button"
+				>
+					{actionLabel}
+				</button>
+			</div>
+		</article>
 	);
 };
 

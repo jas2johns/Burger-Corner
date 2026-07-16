@@ -1,70 +1,148 @@
-.body,
-.html,
-.main {
-	height: 100%;
-}
-
 .menu {
-	background-image: url(/menu.jpg);
-	z-index: -1;
-
-	/* Set a specific height */
 	min-height: 100vh;
-
-	/* Create the parallax scrolling effect */
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+	background:
+		radial-gradient(circle at 12% 0%, rgba(244, 196, 48, 0.14), transparent 28rem),
+		#fff8ef;
+	color: #18120d;
 }
-.menuTitle {
-	background-color: rgba(255, 255, 255, 0.3);
-	border-radius: 25px;
-	/* width: max(20vw, 100px);  */
-	/* box-shadow: 5px 10px #888888; */
 
-	display: flex;
-	/* flex-direction: column; */
-	align-items: center;
-	justify-content: center;
-	padding: 2rem 0;
+.menu-shell {
+	width: min(1180px, calc(100% - 48px));
+	margin: 0 auto;
+	padding: clamp(3.5rem, 7vw, 6.5rem) 0 clamp(4rem, 8vw, 7rem);
 }
+
+.menu-intro {
+	max-width: 720px;
+	margin-bottom: clamp(2.75rem, 6vw, 5rem);
+}
+
+.eyebrow {
+	margin: 0 0 0.85rem;
+	padding: 0;
+	color: #936f1d;
+	font-size: 0.82rem;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	line-height: 1.2;
+	text-align: left;
+	text-transform: uppercase;
+}
+
+.menu-intro h1 {
+	margin: 0;
+	color: #18120d;
+	font-size: clamp(3.75rem, 9vw, 7.25rem);
+	font-weight: 850;
+	letter-spacing: 0;
+	line-height: 0.92;
+	text-align: left;
+}
+
+.intro-copy {
+	max-width: 34rem;
+	margin: 1.25rem 0 0;
+	padding: 0;
+	color: #5f554a;
+	font-size: clamp(1.05rem, 2vw, 1.35rem);
+	line-height: 1.65;
+	text-align: left;
+}
+
 .menu-container {
-	background-color: rgba(255, 255, 255, 0.3);
+	display: grid;
+	gap: clamp(3rem, 6vw, 5.5rem);
 }
 
-.menu-category {
+.menu-section {
+	scroll-margin-top: 5rem;
+}
+
+.section-heading {
 	display: flex;
-	flex-direction: column;
-	/* here for individual menu items */
-	/* background-color: #ebd5b9; */
-	border-radius: 25px;
-	border: none;
-	/* padding: 20px;
-	width: 200px;
-	height: 150px; */
+	align-items: center;
+	gap: 0.9rem;
+	margin-bottom: 1.35rem;
 }
 
-@media screen and (min-width: 800px) {
-	.menu-category {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+.section-heading h2 {
+	margin: 0;
+	color: #18120d;
+	font-size: clamp(2rem, 4vw, 3.1rem);
+	font-weight: 800;
+	letter-spacing: 0;
+	line-height: 1;
+}
+
+.section-accent {
+	display: inline-block;
+	width: 2.25rem;
+	height: 0.35rem;
+	border-radius: 999px;
+	background: #f4c430;
+}
+
+.menu-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: clamp(1rem, 2vw, 1.4rem);
+	align-items: stretch;
+}
+
+.menu-grid-item {
+	min-width: 0;
+}
+
+:global(.bg-dark) .menu {
+	background:
+		radial-gradient(circle at 12% 0%, rgba(244, 196, 48, 0.12), transparent 28rem),
+		#11100f;
+	color: #fff8ef;
+}
+
+:global(.bg-dark) .eyebrow {
+	color: #f4c430;
+}
+
+:global(.bg-dark) .menu-intro h1,
+:global(.bg-dark) .section-heading h2 {
+	color: #fff8ef;
+}
+
+:global(.bg-dark) .intro-copy {
+	color: rgba(255, 248, 239, 0.76);
+}
+
+@media (max-width: 1020px) {
+	.menu-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 }
 
-/* new code */
+@media (max-width: 640px) {
+	.menu-shell {
+		width: min(100% - 28px, 520px);
+		padding: 2.75rem 0 4rem;
+	}
 
-/* still need to align content items */
+	.menu-intro {
+		margin-bottom: 2.5rem;
+	}
 
-.grid-even-columns {
-	display: grid;
-	gap: 1rem;
-	grid-template-columns: repeat(2, 1fr);
-}
+	.menu-intro h1 {
+		font-size: clamp(3rem, 18vw, 4.6rem);
+	}
 
-.menu-container > div {
-	padding: 85px;
-	min-width: 125px;
-	min-height: 125px;
-	gap: 1em;
+	.menu-container {
+		gap: 3rem;
+	}
+
+	.section-heading {
+		margin-bottom: 1rem;
+	}
+
+	.menu-grid {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
 }

@@ -5,32 +5,37 @@ export const allDayMenu = {
 			items: [
 				{
 					id: 1,
+					name: "Classic Burger",
 					description:
-						'The Go 2 classic Single Mustard Grilled Patty, "white" American Cheese, fresh shredded lettuce, tomato.',
+						"A juicy grilled beef patty with American cheese, lettuce, tomato, onion, and classic Corner Sauce.",
 					image: "Classic.svg",
 				},
 				{
 					id: 2,
+					name: "The Double Corner",
 					description:
-						'Double, 2 Mustard Grilled Patties, "white" American Cheese, fresh shredded lettuce, tomato',
+						"Two grilled beef patties, melted American cheese, crisp lettuce, tomato, pickles, and Corner Sauce.",
 					image: "The Double.svg",
 				},
 				{
 					id: 3,
+					name: "Hawaiian Burger",
 					description:
-						"The Hawaiian burger; BBQ Grilled burger 6oz, Chopped Grilled onions, grilled pineapple slice, Monterey jack crisp, and a choice of our house teriyaki Sauce or BBQ sauce.",
+						"Grilled beef with Monterey Jack, sweet pineapple, grilled onions, and a bright teriyaki glaze.",
 					image: "Hawaiin.svg",
 				},
 				{
 					id: 4,
+					name: "Western BBQ",
 					description:
-						"Western, Monterey jack, crispy shallots, chipotle BBQ sauce, caramelized onions",
+						"Grilled beef, Monterey Jack, crispy onions, smoky BBQ sauce, and fresh toppings.",
 					image: "Western.svg",
 				},
 				{
 					id: 5,
+					name: "California Burger",
 					description:
-						'California, Mustard Grilled Patty, Oaxacan Cheese, fresh shredded lettuce, avo slices and a side of "Pico de gallo"',
+						"Mustard-grilled beef with Oaxaca cheese, avocado, shredded lettuce, and fresh pico de gallo.",
 					image: "California Buger.svg",
 				},
 			],
@@ -40,8 +45,9 @@ export const allDayMenu = {
 			items: [
 				{
 					id: 6,
+					name: "Patty Melt",
 					description:
-						"Patty melt with caramelized onions sourdough bread or rye bread",
+						"Grilled beef, melted cheese, and caramelized onions pressed on toasted sourdough.",
 					image: "pattymelt.svg",
 				},
 			],
@@ -51,22 +57,30 @@ export const allDayMenu = {
 			items: [
 				{
 					id: 7,
-					description: "Garden Salad",
+					name: "Garden Salad",
+					description:
+						"Crisp greens, tomato, cucumber, and fresh vegetables tossed for a lighter bite.",
 					image: "Garden Salad.svg",
 				},
 				{
 					id: 8,
-					description: "Ceasar Salad",
+					name: "Caesar Salad",
+					description:
+						"Romaine, parmesan, crunchy croutons, and creamy Caesar dressing.",
 					image: "Ceasar Salad.svg",
 				},
 				{
 					id: 9,
-					description: "Fries",
+					name: "Crispy Fries",
+					description:
+						"Golden, crispy fries served hot and lightly seasoned.",
 					image: "Fries.svg",
 				},
 				{
 					id: 10,
-					description: "Onion Rings",
+					name: "Golden Onion Rings",
+					description:
+						"Thick-cut onion rings fried until crisp, golden, and snackable.",
 					image: "Onion Rings.svg",
 				},
 			],
@@ -76,7 +90,9 @@ export const allDayMenu = {
 			items: [
 				{
 					id: 11,
-					description: "Soft Drink",
+					name: "Soft Drinks",
+					description:
+						"Cold fountain drinks poured fresh to pair with burgers, sides, and sandwiches.",
 					image: "Soda 2.svg",
 				},
 			],
