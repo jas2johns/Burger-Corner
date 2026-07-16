@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 let ShoppingCartContext = createContext({});
 
@@ -10,6 +10,15 @@ export function useShoppingCart() {
 export function ShoppingCartProvider({ children }) {
 	//cartItems is the VAR and the setCart the "Callback func" that updates it
 	const [cartItems, setCartItems] = useState([]);
+	const totalCartItems = cartItems.reduce((total, item) => {
+		const quantity = Number(item?.quantity);
+
+		if (Number.isFinite(quantity) && quantity > 0) {
+			return total + quantity;
+		}
+
+		return item?.menuItem ? total + 1 : total;
+	}, 0);
 
 	function getCartItems() {
 		return cartItems;
@@ -81,6 +90,7 @@ export function ShoppingCartProvider({ children }) {
 		<ShoppingCartContext.Provider
 			value={{
 				cartItems,
+				totalCartItems,
 				getCartItems,
 				getItemQuantity,
 				increaseCartQuantity,

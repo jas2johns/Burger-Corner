@@ -154,9 +154,39 @@
 	background: var(--nav-accent);
 }
 
+.cartIconWrap {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 auto;
+	min-width: 1.35rem;
+	min-height: 1.35rem;
+}
+
 .cartIcon {
 	width: 1.05rem;
 	height: 1.05rem;
+}
+
+.cartBadge {
+	position: absolute;
+	top: -0.55rem;
+	right: -0.7rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 1.25rem;
+	height: 1.25rem;
+	padding: 0 0.32rem;
+	border: 2px solid var(--nav-surface);
+	border-radius: 999px;
+	background: #f4c430;
+	color: #18120d;
+	font-size: 0.68rem;
+	font-weight: 900;
+	line-height: 1;
+	letter-spacing: -0.02em;
 }
 
 .navActions {

@@ -5,9 +5,11 @@ import { useTheme } from "../context/ThemeContext";
 import styles from "../styles/navbar.module.css";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { useUser } from "@auth0/nextjs-auth0";
+import { useShoppingCart } from "../context/ShoppingCartContext";
 
 const Navbar = () => {
 	const { darkModeEnabled, setDarkModeEnabled } = useTheme();
+	const { totalCartItems } = useShoppingCart();
 	const userInfo = useUser();
 	const router = useRouter();
 
@@ -22,6 +24,14 @@ const Navbar = () => {
 	const themeToggleLabel = darkModeEnabled
 		? "Switch to Light Mode"
 		: "Switch to Dark Mode";
+	const displayedCartCount =
+		totalCartItems > 99 ? "99+" : totalCartItems.toString();
+	const cartAriaLabel =
+		totalCartItems === 0
+			? "Shopping cart, empty"
+			: `Shopping cart, ${totalCartItems} ${
+					totalCartItems === 1 ? "item" : "items"
+			  }`;
 
 	return (
 		<nav
@@ -93,13 +103,28 @@ const Navbar = () => {
 													? "page"
 													: undefined
 											}
+											aria-label={
+												item.icon
+													? cartAriaLabel
+													: undefined
+											}
 										>
 											{item.icon && (
-												<ShoppingBagOutlinedIcon
-													className={styles.cartIcon}
-													fontSize="small"
-													aria-hidden="true"
-												/>
+												<span className={styles.cartIconWrap}>
+													<ShoppingBagOutlinedIcon
+														className={styles.cartIcon}
+														fontSize="small"
+														aria-hidden="true"
+													/>
+													{totalCartItems > 0 && (
+														<span
+															className={styles.cartBadge}
+															aria-hidden="true"
+														>
+															{displayedCartCount}
+														</span>
+													)}
+												</span>
 											)}
 											{item.label}
 										</a>
@@ -144,7 +169,7 @@ const Navbar = () => {
 				</div>
 			</div>
 		</nav>
-		);
-	};
+	);
+};
 
 export default Navbar;
