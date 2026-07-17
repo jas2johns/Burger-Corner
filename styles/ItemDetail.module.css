@@ -1,15 +1,329 @@
-.item-container {
-	display: flex;
-	flex-direction: column;
-	margin: auto 3rem auto;
+.page {
+	min-height: calc(100vh - 3.625rem);
+	padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+	background:
+		radial-gradient(circle at top left, rgba(244, 196, 48, 0.18), transparent 32rem),
+		#fff8ef;
+	color: #18120d;
 }
 
-.body {
-	background-image: url("https://images.pexels.com/photos/616484/pexels-photo-616484.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
+.product {
+	display: grid;
+	grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+	align-items: center;
+	gap: clamp(2rem, 5vw, 5rem);
+	max-width: 1180px;
+	margin: 0 auto;
+}
 
-	min-height: 94vh;
-	min-width: 80vw;
+.mediaColumn,
+.copyColumn {
+	min-width: 0;
+}
+
+.imageFrame {
+	position: relative;
+	overflow: hidden;
+	aspect-ratio: 4 / 3;
+	border: 1px solid rgba(24, 18, 13, 0.1);
+	border-radius: 28px;
+	background: #fff2d3;
+	box-shadow: 0 24px 60px rgba(24, 18, 13, 0.16);
+}
+
+.productImage {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.copyColumn {
+	display: grid;
+	gap: 1rem;
+	padding: clamp(0.25rem, 2vw, 1rem) 0;
+}
+
+.eyebrow {
+	margin: 0;
+	color: #936f1d;
+	font-size: 0.78rem;
+	font-weight: 850;
+	line-height: 1.2;
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+}
+
+.copyColumn h1,
+.recovery h1 {
+	margin: 0;
+	color: #18120d;
+	font-size: clamp(2.35rem, 6vw, 5.2rem);
+	font-weight: 900;
+	line-height: 0.95;
+	letter-spacing: -0.06em;
+}
+
+.description,
+.recovery p {
+	max-width: 36rem;
+	margin: 0;
+	color: #5f554a;
+	font-size: clamp(1.02rem, 1.4vw, 1.2rem);
+	line-height: 1.7;
+}
+
+.orderPanel {
+	display: grid;
+	gap: 1rem;
+	max-width: 28rem;
+	margin-top: clamp(0.75rem, 2vw, 1.5rem);
+	padding: clamp(1rem, 2.5vw, 1.35rem);
+	border: 1px solid rgba(24, 18, 13, 0.1);
+	border-radius: 24px;
+	background: #fffdf8;
+	box-shadow: 0 18px 44px rgba(24, 18, 13, 0.1);
+}
+
+.quantityHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	color: #5f554a;
+	font-size: 0.88rem;
+	font-weight: 800;
+	line-height: 1.2;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+.quantityHeader strong {
+	color: #18120d;
+	font-size: 1.05rem;
+	letter-spacing: 0;
+}
+
+.quantityControls {
+	display: grid;
+	grid-template-columns: 3rem minmax(4rem, 1fr) 3rem;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.quantityButton,
+.addButton,
+.menuLink {
+	border-radius: 999px;
+	font: inherit;
+	font-weight: 850;
+	cursor: pointer;
+	transition:
+		background-color 180ms ease,
+		border-color 180ms ease,
+		box-shadow 180ms ease,
+		color 180ms ease,
+		transform 180ms ease;
+}
+
+.quantityButton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 3rem;
+	min-height: 3rem;
+	border: 1px solid rgba(24, 18, 13, 0.16);
+	background: #fff8ef;
+	color: #18120d;
+}
+
+.quantityButton:hover:not(:disabled),
+.quantityButton:focus:not(:disabled) {
+	border-color: rgba(24, 18, 13, 0.3);
+	background: #18120d;
+	color: #fff8ef;
+}
+
+.quantityButton:disabled {
+	cursor: not-allowed;
+	opacity: 0.42;
+}
+
+.quantityValue {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 3rem;
+	border: 1px solid rgba(24, 18, 13, 0.1);
+	border-radius: 999px;
+	background: #fff8ef;
+	color: #18120d;
+	font-size: 1.15rem;
+	font-weight: 900;
+}
+
+.addButton,
+.menuLink {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 3.25rem;
+	padding: 0.9rem 1.35rem;
+	border: 2px solid #f4c430;
+	background: #f4c430;
+	color: #18120d;
+	line-height: 1;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.addButton:hover,
+.addButton:focus,
+.menuLink:hover,
+.menuLink:focus {
+	border-color: #18120d;
+	background: #18120d;
+	color: #fff8ef;
+	transform: translateY(-1px);
+}
+
+.quantityButton:focus-visible,
+.addButton:focus-visible,
+.menuLink:focus-visible {
+	outline: 3px solid rgba(244, 196, 48, 0.55);
+	outline-offset: 4px;
+}
+
+.recovery {
+	display: grid;
+	gap: 1rem;
+	max-width: 48rem;
+	margin: 0 auto;
+	padding: clamp(2rem, 6vw, 4rem);
+	border: 1px solid rgba(24, 18, 13, 0.1);
+	border-radius: 28px;
+	background: #fffdf8;
+	box-shadow: 0 18px 44px rgba(24, 18, 13, 0.1);
+}
+
+.recovery .menuLink {
+	width: fit-content;
+	margin-top: 0.5rem;
+}
+
+:global(.bg-dark) .page {
+	background:
+		radial-gradient(circle at top left, rgba(244, 196, 48, 0.12), transparent 32rem),
+		#11100f;
+	color: #fff8ef;
+}
+
+:global(.bg-dark) .imageFrame,
+:global(.bg-dark) .orderPanel,
+:global(.bg-dark) .recovery {
+	border-color: rgba(255, 248, 239, 0.12);
+	background: #1c1a18;
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+}
+
+:global(.bg-dark) .copyColumn h1,
+:global(.bg-dark) .recovery h1,
+:global(.bg-dark) .quantityHeader strong,
+:global(.bg-dark) .quantityValue {
+	color: #fff8ef;
+}
+
+:global(.bg-dark) .description,
+:global(.bg-dark) .recovery p,
+:global(.bg-dark) .quantityHeader {
+	color: rgba(255, 248, 239, 0.76);
+}
+
+:global(.bg-dark) .eyebrow {
+	color: #f4c430;
+}
+
+:global(.bg-dark) .quantityButton,
+:global(.bg-dark) .quantityValue {
+	border-color: rgba(255, 248, 239, 0.14);
+	background: #25211d;
+	color: #fff8ef;
+}
+
+:global(.bg-dark) .quantityButton:hover:not(:disabled),
+:global(.bg-dark) .quantityButton:focus:not(:disabled) {
+	border-color: #fff8ef;
+	background: #fff8ef;
+	color: #18120d;
+}
+
+:global(.bg-dark) .addButton:hover,
+:global(.bg-dark) .addButton:focus,
+:global(.bg-dark) .menuLink:hover,
+:global(.bg-dark) .menuLink:focus {
+	border-color: #fff8ef;
+	background: #fff8ef;
+	color: #18120d;
+}
+
+@media (max-width: 980px) {
+	.product {
+		grid-template-columns: 1fr;
+		align-items: start;
+		max-width: 680px;
+	}
+
+	.copyColumn {
+		padding: 0;
+	}
+
+	.orderPanel {
+		max-width: none;
+	}
+}
+
+@media (max-width: 520px) {
+	.page {
+		padding: 1.25rem 1rem 2.5rem;
+	}
+
+	.product {
+		gap: 1.35rem;
+	}
+
+	.imageFrame,
+	.orderPanel,
+	.recovery {
+		border-radius: 20px;
+	}
+
+	.copyColumn h1,
+	.recovery h1 {
+		font-size: clamp(2.15rem, 14vw, 3.25rem);
+	}
+
+	.addButton,
+	.menuLink {
+		width: 100%;
+	}
+
+	.recovery {
+		padding: 1.5rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.quantityButton,
+	.addButton,
+	.menuLink {
+		transition: none;
+	}
+
+	.addButton:hover,
+	.addButton:focus,
+	.menuLink:hover,
+	.menuLink:focus {
+		transform: none;
+	}
 }
