@@ -1,31 +1,467 @@
-.cartBackground {
-	background-image: url("https://images.pexels.com/photos/6956890/pexels-photo-6956890.jpeg");
-	z-index: -1;
-
-	/* Set a specific height */
-	min-height: 100vh;
-
-	/* Create the parallax scrolling effect */
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+.cartPage {
+	min-height: calc(100vh - 3.625rem);
+	padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+	background:
+		radial-gradient(circle at top left, rgba(244, 196, 48, 0.16), transparent 32rem),
+		#fff8ef;
+	color: #18120d;
 }
 
-.please-add-container {
-	font-size: 3rem;
-	text-align: center;
-	padding: 0 4.5rem 0;
-	/* display: grid; */
+.cartShell {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(300px, 0.38fr);
+	align-items: start;
+	gap: clamp(1.5rem, 4vw, 3rem);
+	max-width: 1180px;
+	margin: 0 auto;
+}
+
+.cartItemsSection {
+	min-width: 0;
+}
+
+.eyebrow {
+	margin: 0 0 0.75rem;
+	color: #936f1d;
+	font-size: 0.78rem;
+	font-weight: 850;
+	line-height: 1.2;
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+}
+
+.cartItemsSection h1,
+.emptyState h1 {
+	margin: 0;
+	color: #18120d;
+	font-size: clamp(2.5rem, 6vw, 4.75rem);
+	font-weight: 900;
+	line-height: 0.96;
+	letter-spacing: -0.06em;
+}
+
+.intro,
+.emptyState p {
+	max-width: 42rem;
+	margin: 1rem 0 0;
+	color: #5f554a;
+	font-size: clamp(1rem, 1.4vw, 1.16rem);
+	line-height: 1.7;
+}
+
+.cartList {
+	display: grid;
+	gap: 1rem;
+	margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.cartItem,
+.summary,
+.emptyState {
+	border: 1px solid rgba(24, 18, 13, 0.1);
+	border-radius: 26px;
+	background: #fffdf8;
+	box-shadow: 0 18px 44px rgba(24, 18, 13, 0.09);
+}
+
+.cartItem {
+	display: grid;
+	grid-template-columns: minmax(9rem, 12rem) minmax(0, 1fr);
+	align-items: center;
+	gap: clamp(1.15rem, 2.2vw, 1.6rem);
+	padding: clamp(1rem, 2.2vw, 1.25rem);
+}
+
+.itemImageFrame {
+	position: relative;
+	overflow: hidden;
+	align-self: stretch;
+	aspect-ratio: 4 / 3;
+	border-radius: 20px;
+	background: #fff2d3;
+}
+
+.itemImage {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.itemInfo {
+	display: grid;
+	align-items: center;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: clamp(1rem, 2vw, 1.5rem);
+	min-width: 0;
+}
+
+.itemCopy {
+	min-width: 0;
+}
+
+.itemCopy h2 {
+	margin: 0;
+	color: #18120d;
+	font-size: clamp(1.15rem, 2vw, 1.45rem);
+	font-weight: 900;
+	line-height: 1.1;
+	letter-spacing: -0.035em;
+}
+
+.itemCopy p {
+	max-width: 34rem;
+	margin: 0.5rem 0 0;
+	color: #5f554a;
+	font-size: 0.95rem;
+	line-height: 1.55;
+}
+
+.itemControls {
+	display: grid;
+	align-content: center;
+	justify-items: end;
+	gap: 0.75rem;
+}
+
+.quantityControls {
+	display: grid;
+	grid-template-columns: 2.75rem 3.2rem 2.75rem;
+	align-items: center;
+	gap: 0.45rem;
+}
+
+.quantityButton,
+.removeButton,
+.checkoutButton,
+.primaryLink,
+.continueLink {
+	border-radius: 999px;
+	font: inherit;
+	font-weight: 850;
+	cursor: pointer;
+	transition:
+		background-color 180ms ease,
+		border-color 180ms ease,
+		box-shadow 180ms ease,
+		color 180ms ease,
+		transform 180ms ease;
+}
+
+.quantityButton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 2.75rem;
+	min-height: 2.75rem;
+	border: 1px solid rgba(24, 18, 13, 0.16);
+	background: #fff8ef;
+	color: #18120d;
+}
+
+.quantityButton:hover,
+.quantityButton:focus {
+	border-color: rgba(24, 18, 13, 0.32);
+	background: #18120d;
+	color: #fff8ef;
+}
+
+.quantityValue {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 2.75rem;
+	border: 1px solid rgba(24, 18, 13, 0.1);
+	border-radius: 999px;
+	background: #fff8ef;
+	color: #18120d;
+	font-size: 1rem;
+	font-weight: 900;
+}
+
+.removeButton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.35rem;
+	min-height: 2.75rem;
+	padding: 0.65rem 0.9rem;
+	border: 1px solid rgba(24, 18, 13, 0.12);
+	background: transparent;
+	color: #6f6256;
+	font-size: 0.88rem;
+	line-height: 1;
+}
+
+.removeButton:hover,
+.removeButton:focus {
+	border-color: rgba(139, 42, 24, 0.32);
+	background: rgba(139, 42, 24, 0.08);
+	color: #8b2a18;
+}
+
+.summary {
+	position: sticky;
+	top: 2rem;
+	display: grid;
+	gap: 1.25rem;
+	padding: clamp(1.1rem, 2.5vw, 1.5rem);
+}
+
+.summary h2 {
+	margin: 0;
+	color: #18120d;
+	font-size: clamp(1.45rem, 2.6vw, 2rem);
+	font-weight: 900;
+	line-height: 1.05;
+	letter-spacing: -0.04em;
+}
+
+.summaryRows {
+	display: grid;
+	gap: 0.75rem;
+	padding: 0.85rem 0;
+	border-top: 1px solid rgba(24, 18, 13, 0.1);
+	border-bottom: 1px solid rgba(24, 18, 13, 0.1);
+}
+
+.summaryRow {
 	display: flex;
-	flex-direction: column;  /* make main axis vertical */
-    justify-content: center;	/*center items vertically, in this case */
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	color: #5f554a;
+	font-size: 0.96rem;
+	font-weight: 750;
+}
 
-	/* ok so the issue now is the alignment of being essentially 20-30% from the top... */
+.summaryRow strong {
+	color: #18120d;
+	font-size: 1.08rem;
+	font-weight: 900;
+}
 
-	gap: 10rem;
-    align-items: center;     /* center items horizontally, in this case */
-	/* grid-template-rows: 1fr 0;
-  	grid-auto-flow: column;  */
-	height: 100vh;
+.checkoutButton,
+.primaryLink {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 3.25rem;
+	padding: 0.9rem 1.25rem;
+	border: 2px solid #f4c430;
+	background: #f4c430;
+	color: #18120d;
+	line-height: 1;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.checkoutButton:hover,
+.checkoutButton:focus,
+.primaryLink:hover,
+.primaryLink:focus {
+	border-color: #18120d;
+	background: #18120d;
+	color: #fff8ef;
+	transform: translateY(-1px);
+}
+
+.continueLink {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 2.75rem;
+	color: #5f554a;
+	font-size: 0.92rem;
+	line-height: 1;
+	text-decoration: none;
+}
+
+.continueLink:hover,
+.continueLink:focus {
+	color: #18120d;
+	background: rgba(244, 196, 48, 0.14);
+}
+
+.quantityButton:focus-visible,
+.removeButton:focus-visible,
+.checkoutButton:focus-visible,
+.primaryLink:focus-visible,
+.continueLink:focus-visible {
+	outline: 3px solid rgba(244, 196, 48, 0.55);
+	outline-offset: 4px;
+}
+
+.emptyState {
+	display: grid;
+	justify-items: start;
+	gap: 1rem;
+	max-width: 48rem;
+	margin: 0 auto;
+	padding: clamp(2rem, 6vw, 4rem);
+}
+
+.emptyState .primaryLink {
+	margin-top: 0.5rem;
+}
+
+:global(.bg-dark) .cartPage {
+	background:
+		radial-gradient(circle at top left, rgba(244, 196, 48, 0.12), transparent 32rem),
+		#11100f;
+	color: #fff8ef;
+}
+
+:global(.bg-dark) .cartItem,
+:global(.bg-dark) .summary,
+:global(.bg-dark) .emptyState {
+	border-color: rgba(255, 248, 239, 0.12);
+	background: #1c1a18;
+	box-shadow: 0 18px 44px rgba(0, 0, 0, 0.3);
+}
+
+:global(.bg-dark) .itemImageFrame {
+	background: #25211d;
+}
+
+:global(.bg-dark) .cartItemsSection h1,
+:global(.bg-dark) .emptyState h1,
+:global(.bg-dark) .itemCopy h2,
+:global(.bg-dark) .summary h2,
+:global(.bg-dark) .summaryRow strong,
+:global(.bg-dark) .quantityValue {
+	color: #fff8ef;
+}
+
+:global(.bg-dark) .intro,
+:global(.bg-dark) .emptyState p,
+:global(.bg-dark) .itemCopy p,
+:global(.bg-dark) .summaryRow,
+:global(.bg-dark) .continueLink {
+	color: rgba(255, 248, 239, 0.76);
+}
+
+:global(.bg-dark) .eyebrow {
+	color: #f4c430;
+}
+
+:global(.bg-dark) .summaryRows,
+:global(.bg-dark) .quantityButton,
+:global(.bg-dark) .quantityValue,
+:global(.bg-dark) .removeButton {
+	border-color: rgba(255, 248, 239, 0.14);
+}
+
+:global(.bg-dark) .quantityButton,
+:global(.bg-dark) .quantityValue {
+	background: #25211d;
+	color: #fff8ef;
+}
+
+:global(.bg-dark) .quantityButton:hover,
+:global(.bg-dark) .quantityButton:focus {
+	border-color: #fff8ef;
+	background: #fff8ef;
+	color: #18120d;
+}
+
+:global(.bg-dark) .removeButton {
+	color: rgba(255, 248, 239, 0.72);
+}
+
+:global(.bg-dark) .removeButton:hover,
+:global(.bg-dark) .removeButton:focus {
+	border-color: rgba(244, 196, 48, 0.4);
+	background: rgba(244, 196, 48, 0.12);
+	color: #f4c430;
+}
+
+:global(.bg-dark) .checkoutButton:hover,
+:global(.bg-dark) .checkoutButton:focus,
+:global(.bg-dark) .primaryLink:hover,
+:global(.bg-dark) .primaryLink:focus {
+	border-color: #fff8ef;
+	background: #fff8ef;
+	color: #18120d;
+}
+
+:global(.bg-dark) .continueLink:hover,
+:global(.bg-dark) .continueLink:focus {
+	color: #fff8ef;
+	background: rgba(255, 248, 239, 0.08);
+}
+
+@media (max-width: 980px) {
+	.cartShell {
+		grid-template-columns: 1fr;
+		max-width: 760px;
+	}
+
+	.summary {
+		position: static;
+	}
+}
+
+@media (max-width: 640px) {
+	.cartPage {
+		padding: 1.25rem 1rem 2.5rem;
+	}
+
+	.cartItem {
+		grid-template-columns: minmax(7rem, 9rem) minmax(0, 1fr);
+		border-radius: 20px;
+	}
+
+	.itemInfo {
+		grid-template-columns: 1fr;
+		align-items: start;
+	}
+
+	.itemControls {
+		justify-items: stretch;
+	}
+
+	.quantityControls {
+		grid-template-columns: 2.75rem minmax(3rem, 1fr) 2.75rem;
+	}
+
+	.removeButton,
+	.checkoutButton,
+	.primaryLink,
+	.continueLink {
+		width: 100%;
+	}
+
+	.summary,
+	.emptyState {
+		border-radius: 20px;
+	}
+}
+
+@media (max-width: 430px) {
+	.cartItem {
+		grid-template-columns: 1fr;
+	}
+
+	.itemImageFrame {
+		max-height: 14rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.quantityButton,
+	.removeButton,
+	.checkoutButton,
+	.primaryLink,
+	.continueLink {
+		transition: none;
+	}
+
+	.checkoutButton:hover,
+	.checkoutButton:focus,
+	.primaryLink:hover,
+	.primaryLink:focus {
+		transform: none;
+	}
 }
