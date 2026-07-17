@@ -6,9 +6,7 @@ export function useShoppingCart() {
 	return useContext(ShoppingCartContext);
 }
 
-//
 export function ShoppingCartProvider({ children }) {
-	//cartItems is the VAR and the setCart the "Callback func" that updates it
 	const [cartItems, setCartItems] = useState([]);
 	const totalCartItems = cartItems.reduce((total, item) => {
 		const quantity = Number(item?.quantity);
@@ -31,23 +29,18 @@ export function ShoppingCartProvider({ children }) {
 			}
 		}
 		const matchedItem = cartItems.find(menuItemMatches);
-		//the conditional below is looking for the quatitity property of the obj(matchedItem)
-		// and if its undefined, it will return Zero
 		return matchedItem?.quantity || 0;
 	}
 
 	function increaseCartQuantity(menuItem) {
 		setCartItems((currItems) => {
-			// if the array does NOT have a matching Obj.id it will return with a Qty of 1
 			const existingCartItem = currItems.find(
 				(item) => item.menuItem.id === menuItem.id
 			);
 
 			if (existingCartItem == null) {
 				return [...currItems, { menuItem: menuItem, quantity: 1 }];
-			}
-			// if the array does have a matching Obj.id then it will increase it by 1
-			else {
+			} else {
 				return currItems.map((item) => {
 					if (item.menuItem.id === menuItem.id) {
 						return {
