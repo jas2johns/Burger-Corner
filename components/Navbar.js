@@ -158,7 +158,9 @@ const Navbar = () => {
 								aria-pressed={darkModeEnabled}
 								className={styles.themeButton}
 								onClick={() =>
-									setDarkModeEnabled(!darkModeEnabled)
+									setDarkModeEnabled(
+										(currentValue) => !currentValue
+									)
 								}
 								type="button"
 							>

@@ -154,6 +154,10 @@
 	background: var(--nav-accent);
 }
 
+.brand.activeLink::after {
+	content: none;
+}
+
 .cartIconWrap {
 	position: relative;
 	display: inline-flex;
