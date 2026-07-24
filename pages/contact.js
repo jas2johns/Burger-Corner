@@ -1,11 +1,11 @@
 import { useState } from "react";
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
+import Seo from "../components/Seo";
 import styles from "../styles/Contact.module.css";
 
 const contactDetails = {
@@ -122,14 +122,12 @@ export default function Contact() {
 
 	return (
 		<div className={styles.page}>
-			<Head>
-				<title>Contact Burger Corner</title>
-				<meta
-					name="description"
-					content="Contact Burger Corner for questions, feedback, large orders, catering, and restaurant information."
-				/>
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+			<Seo
+				description="Contact Burger Corner for questions, feedback, large orders, catering, hours, and restaurant information."
+				image="/menu.jpg"
+				path="/contact"
+				title="Contact Burger Corner | Hours, Location, and Questions"
+			/>
 
 			<main className={styles.main}>
 				<section className={styles.hero} aria-labelledby="contact-title">

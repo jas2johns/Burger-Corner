@@ -1,0 +1,17 @@
+{
+	"name": "Burger Corner",
+	"short_name": "Burger Corner",
+	"description": "A fictional neighborhood burger restaurant with fresh, made-to-order burgers.",
+	"start_url": "/",
+	"display": "standalone",
+	"theme_color": "#f4c430",
+	"background_color": "#fff8ef",
+	"icons": [
+		{
+			"src": "/Burger_Corner.svg",
+			"sizes": "1536x2048",
+			"type": "image/svg+xml",
+			"purpose": "any"
+		}
+	]
+}

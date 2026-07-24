@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { getMenuItemVisual } from "../data/menuImages";
+import { formatCurrency } from "../utilities/formatCurrency";
 
 const MenuItem = (props) => {
 	const { addToCartMode } = props;
@@ -25,6 +26,9 @@ const MenuItem = (props) => {
 
 	const isNavigateMode = addToCartMode === "navigate";
 	const actionLabel = isNavigateMode ? "View Item" : "Add to Cart";
+	const actionAriaLabel = isNavigateMode
+		? `View ${name}`
+		: `Add ${name} to cart`;
 	const visual = getMenuItemVisual(props.menuItem);
 	const imageClassName = `${styles["item-image"]} ${
 		styles[
@@ -53,12 +57,19 @@ const MenuItem = (props) => {
 
 			<div className={styles["item-content"]}>
 				<div className={styles["item-copy"]}>
-					{name && <h3>{name}</h3>}
-					{price && <p className={styles["price"]}>{price}</p>}
+					<div className={styles["item-heading"]}>
+						{name && <h3>{name}</h3>}
+						{Number.isFinite(price) && (
+							<p className={styles["price"]}>
+								{formatCurrency(price)}
+							</p>
+						)}
+					</div>
 					<p className={styles["description"]}>{description}</p>
 				</div>
 
 				<button
+					aria-label={actionAriaLabel}
 					className={styles["action"]}
 					onClick={handleAddToCart}
 					type="button"

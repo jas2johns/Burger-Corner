@@ -1,9 +1,9 @@
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import LunchDiningIcon from "@mui/icons-material/LunchDining";
 import OutdoorGrillIcon from "@mui/icons-material/OutdoorGrill";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
+import Seo from "../components/Seo";
 import styles from "../styles/About.module.css";
 
 const features = [
@@ -30,10 +30,12 @@ const features = [
 export default function About() {
 	return (
 		<div className={styles.page}>
-			<Head>
-				<title>About Burger Corner</title>
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+			<Seo
+				description="Learn the story behind Burger Corner, a fictional neighborhood burger spot focused on fresh ingredients, cooked-to-order burgers, and friendly service."
+				image="/menu.jpg"
+				path="/about"
+				title="About Burger Corner | Our Story"
+			/>
 
 			<main className={styles.main}>
 				<section className={styles.hero} aria-labelledby="about-title">

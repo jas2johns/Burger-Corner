@@ -4,30 +4,51 @@ import { useState } from "react";
 import { Add, DeleteOutline, Remove } from "@mui/icons-material";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { getMenuItemVisual } from "../data/menuImages";
+import Seo from "../components/Seo";
+import { formatCurrency } from "../utilities/formatCurrency";
 import styles from "../styles/Cart.module.css";
 
-const EmptyCart = () => {
-	return (
-		<section className={styles.emptyState} aria-labelledby="empty-cart-heading">
-			<p className={styles.eyebrow}>Your Burger Corner order</p>
-			<h1 id="empty-cart-heading">Your cart is empty</h1>
-			<p>Add a burger, side, or drink to get your order started.</p>
-			<Link href="/menu">
-				<a className={styles.primaryLink}>Browse the Menu</a>
-			</Link>
-		</section>
-	);
+const TAX_RATE = 0.08;
+
+const getCartSubtotal = (cartItems) => {
+	return cartItems.reduce((total, cartItem) => {
+		const itemPrice = Number(cartItem?.menuItem?.price) || 0;
+		const quantity = Number(cartItem?.quantity) || 0;
+
+		return total + itemPrice * quantity;
+	}, 0);
 };
 
-const ThankYou = () => {
+const EmptyCart = () => {
+	const emptyVisual = getMenuItemVisual({ id: 2, name: "Corner Burger" });
+
 	return (
-		<section className={styles.emptyState} aria-labelledby="checkout-heading">
-			<p className={styles.eyebrow}>Order received</p>
-			<h1 id="checkout-heading">Thanks for shopping with us</h1>
-			<p>Your Burger Corner order has been submitted.</p>
-			<Link href="/menu">
-				<a className={styles.primaryLink}>Order More</a>
-			</Link>
+		<section className={styles.emptyState} aria-labelledby="empty-cart-heading">
+			<div className={styles.emptyCopy}>
+				<p className={styles.eyebrow}>Your Burger Corner order</p>
+				<h1 id="empty-cart-heading">Your cart is empty.</h1>
+				<p>
+					Build your order from the menu and come back when you have a
+					burger, side, or shake ready to go.
+				</p>
+				<Link href="/menu">
+					<a className={styles.primaryLink}>Browse the Menu</a>
+				</Link>
+			</div>
+			<div className={styles.emptyImageFrame} aria-hidden="true">
+				<Image
+					alt=""
+					className={styles.emptyImage}
+					src={emptyVisual.src}
+					style={{
+						objectPosition: emptyVisual.position,
+						transform: `scale(${emptyVisual.scale})`,
+						transformOrigin: emptyVisual.transformOrigin,
+					}}
+					width={520}
+					height={390}
+				/>
+			</div>
 		</section>
 	);
 };
@@ -40,6 +61,8 @@ const CartItem = ({
 }) => {
 	const { menuItem, quantity } = cartItem;
 	const visual = getMenuItemVisual(menuItem);
+	const unitPrice = Number(menuItem.price) || 0;
+	const itemSubtotal = unitPrice * quantity;
 
 	return (
 		<article className={styles.cartItem}>
@@ -62,6 +85,7 @@ const CartItem = ({
 				<div className={styles.itemCopy}>
 					<h2>{menuItem.name}</h2>
 					<p>{menuItem.description}</p>
+					<p className={styles.itemPrice}>{formatCurrency(unitPrice)} each</p>
 				</div>
 
 				<div className={styles.itemControls}>
@@ -70,7 +94,7 @@ const CartItem = ({
 						aria-label={`${menuItem.name} quantity controls`}
 					>
 						<button
-							aria-label={`Decrease ${menuItem.name} quantity`}
+							aria-label={`Decrease quantity of ${menuItem.name}`}
 							className={styles.quantityButton}
 							onClick={() => decreaseCartQuantity(menuItem)}
 							type="button"
@@ -82,11 +106,12 @@ const CartItem = ({
 							aria-label={`${quantity} ${
 								quantity === 1 ? "item" : "items"
 							} in cart`}
+							aria-live="polite"
 						>
 							{quantity}
 						</span>
 						<button
-							aria-label={`Increase ${menuItem.name} quantity`}
+							aria-label={`Increase quantity of ${menuItem.name}`}
 							className={styles.quantityButton}
 							onClick={() => increaseCartQuantity(menuItem)}
 							type="button"
@@ -104,6 +129,11 @@ const CartItem = ({
 						<DeleteOutline fontSize="small" aria-hidden="true" />
 						Remove
 					</button>
+
+					<p className={styles.itemSubtotal}>
+						<span>Item subtotal</span>
+						<strong>{formatCurrency(itemSubtotal)}</strong>
+					</p>
 				</div>
 			</div>
 		</article>
@@ -111,7 +141,8 @@ const CartItem = ({
 };
 
 const ShoppingCart = () => {
-	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [cartStatus, setCartStatus] = useState("");
+	const [isCheckoutNoticeVisible, setIsCheckoutNoticeVisible] = useState(false);
 	const {
 		cartItems,
 		decreaseCartQuantity,
@@ -120,83 +151,152 @@ const ShoppingCart = () => {
 		totalCartItems,
 	} = useShoppingCart();
 	const uniqueProductCount = cartItems.length;
+	const itemSubtotal = getCartSubtotal(cartItems);
+	const estimatedTax = itemSubtotal * TAX_RATE;
+	const estimatedTotal = itemSubtotal + estimatedTax;
+
+	const announceCartChange = (message) => {
+		setCartStatus(message);
+	};
+
+	const handleIncreaseCartQuantity = (menuItem) => {
+		increaseCartQuantity(menuItem);
+		announceCartChange(`Increased quantity of ${menuItem.name}.`);
+	};
+
+	const handleDecreaseCartQuantity = (menuItem) => {
+		decreaseCartQuantity(menuItem);
+		announceCartChange(`Decreased quantity of ${menuItem.name}.`);
+	};
+
+	const handleRemoveFromCart = (menuItem) => {
+		removeFromCart(menuItem);
+		announceCartChange(`Removed ${menuItem.name} from your cart.`);
+	};
 
 	const handleCheckout = () => {
-		setIsSubmitted(true);
+		setIsCheckoutNoticeVisible(true);
+		announceCartChange("Checkout notice opened.");
 	};
 
 	if (cartItems.length === 0) {
 		return (
-			<main className={styles.cartPage}>
-				<EmptyCart />
-			</main>
-		);
-	}
-
-	if (isSubmitted) {
-		return (
-			<main className={styles.cartPage}>
-				<ThankYou />
-			</main>
+			<>
+				<Seo
+					description="Review your Burger Corner order before checkout."
+					image="/BURGER.jpg"
+					path="/shoppingCart"
+					title="Shopping Cart | Burger Corner"
+				/>
+				<main className={styles.cartPage}>
+					<EmptyCart />
+				</main>
+			</>
 		);
 	}
 
 	return (
-		<main className={styles.cartPage}>
-			<div className={styles.cartShell}>
-				<section
-					className={styles.cartItemsSection}
-					aria-labelledby="cart-heading"
-				>
-					<p className={styles.eyebrow}>Your Burger Corner order</p>
-					<h1 id="cart-heading">Your Cart</h1>
-					<p className={styles.intro}>
-						Review your order, adjust quantities, and check out when
-						you&apos;re ready.
-					</p>
-
-					<div className={styles.cartList}>
-						{cartItems.map((cartItem) => (
-							<CartItem
-								cartItem={cartItem}
-								decreaseCartQuantity={decreaseCartQuantity}
-								increaseCartQuantity={increaseCartQuantity}
-								key={cartItem.menuItem.id}
-								removeFromCart={removeFromCart}
-							/>
-						))}
-					</div>
-				</section>
-
-				<aside className={styles.summary} aria-labelledby="summary-heading">
-					<p className={styles.eyebrow}>Order summary</p>
-					<h2 id="summary-heading">Ready when you are.</h2>
-
-					<div className={styles.summaryRows}>
-						<div className={styles.summaryRow}>
-							<span>Total items</span>
-							<strong>{totalCartItems}</strong>
-						</div>
-						<div className={styles.summaryRow}>
-							<span>Unique products</span>
-							<strong>{uniqueProductCount}</strong>
-						</div>
-					</div>
-
-					<button
-						className={styles.checkoutButton}
-						onClick={handleCheckout}
-						type="button"
+		<>
+			<Seo
+				description="Review your Burger Corner order before checkout."
+				image="/BURGER.jpg"
+				path="/shoppingCart"
+				title="Shopping Cart | Burger Corner"
+			/>
+			<main className={styles.cartPage}>
+				<div className={styles.cartShell}>
+					<section
+						className={styles.cartItemsSection}
+						aria-labelledby="cart-heading"
 					>
-						Proceed to Checkout
-					</button>
+						<p className={styles.eyebrow}>Your Burger Corner order</p>
+						<h1 id="cart-heading">Your Cart</h1>
+						<p className={styles.intro}>
+							Review your order, adjust quantities, and check out when
+							you&apos;re ready.
+						</p>
+						<p className={styles.cartStatus} aria-live="polite">
+							{cartStatus}
+						</p>
 
-					<Link href="/menu">
-						<a className={styles.continueLink}>Continue Shopping</a>
-					</Link>
-				</aside>
-			</div>
-		</main>
+						<div className={styles.cartList}>
+							{cartItems.map((cartItem) => (
+								<CartItem
+									cartItem={cartItem}
+									decreaseCartQuantity={handleDecreaseCartQuantity}
+									increaseCartQuantity={handleIncreaseCartQuantity}
+									key={cartItem.menuItem.id}
+									removeFromCart={handleRemoveFromCart}
+								/>
+							))}
+						</div>
+					</section>
+
+					<aside className={styles.summary} aria-labelledby="summary-heading">
+						<p className={styles.eyebrow}>Order summary</p>
+						<h2 id="summary-heading">Ready when you are.</h2>
+
+						<div className={styles.summaryRows}>
+							<div className={styles.summaryRow}>
+								<span>Number of items</span>
+								<strong>{totalCartItems}</strong>
+							</div>
+							<div className={styles.summaryRow}>
+								<span>Item subtotal</span>
+								<strong>{formatCurrency(itemSubtotal)}</strong>
+							</div>
+							<div className={styles.summaryRow}>
+								<span>Estimated tax (8%)</span>
+								<strong>{formatCurrency(estimatedTax)}</strong>
+							</div>
+							<div className={`${styles.summaryRow} ${styles.totalRow}`}>
+								<span>Estimated total</span>
+								<strong>{formatCurrency(estimatedTotal)}</strong>
+							</div>
+						</div>
+
+						<p className={styles.summaryNote}>
+							{uniqueProductCount}{" "}
+							{uniqueProductCount === 1 ? "menu item" : "menu items"} in
+							your cart. Taxes are estimated for this demo.
+						</p>
+
+						<button
+							className={styles.checkoutButton}
+							onClick={handleCheckout}
+							type="button"
+						>
+							Proceed to Checkout
+						</button>
+
+						{isCheckoutNoticeVisible && (
+							<div
+								className={styles.checkoutNotice}
+								role="status"
+								aria-live="polite"
+							>
+								<p>
+									This project is a portfolio demonstration. Checkout is not
+									implemented.
+								</p>
+								<button
+									aria-label="Dismiss checkout notice"
+									className={styles.noticeDismiss}
+									onClick={() => setIsCheckoutNoticeVisible(false)}
+									type="button"
+								>
+									Dismiss
+								</button>
+							</div>
+						)}
+
+						<Link href="/menu">
+							<a className={styles.continueLink}>Continue Shopping</a>
+						</Link>
+					</aside>
+				</div>
+			</main>
+		</>
 	);
 };
 

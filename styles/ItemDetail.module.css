@@ -43,6 +43,26 @@
 	padding: clamp(0.25rem, 2vw, 1rem) 0;
 }
 
+.backLink {
+	width: fit-content;
+	color: #936f1d;
+	font-size: 0.82rem;
+	font-weight: 850;
+	line-height: 1;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	transition:
+		color 180ms ease,
+		transform 180ms ease;
+}
+
+.backLink:hover,
+.backLink:focus {
+	color: #18120d;
+	transform: translateX(-2px);
+}
+
 .eyebrow {
 	margin: 0;
 	color: #936f1d;
@@ -70,6 +90,14 @@
 	color: #5f554a;
 	font-size: clamp(1.02rem, 1.4vw, 1.2rem);
 	line-height: 1.7;
+}
+
+.price {
+	margin: 0;
+	color: #18120d;
+	font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+	font-weight: 900;
+	line-height: 1.1;
 }
 
 .orderPanel {
@@ -178,6 +206,15 @@
 	letter-spacing: 0.08em;
 }
 
+.statusMessage {
+	min-height: 1.5rem;
+	margin: 0;
+	color: #5f554a;
+	font-size: 0.96rem;
+	font-weight: 750;
+	line-height: 1.5;
+}
+
 .addButton:hover,
 .addButton:focus,
 .menuLink:hover,
@@ -190,7 +227,8 @@
 
 .quantityButton:focus-visible,
 .addButton:focus-visible,
-.menuLink:focus-visible {
+.menuLink:focus-visible,
+.backLink:focus-visible {
 	outline: 3px solid rgba(244, 196, 48, 0.55);
 	outline-offset: 4px;
 }
@@ -230,18 +268,26 @@
 :global(.bg-dark) .copyColumn h1,
 :global(.bg-dark) .recovery h1,
 :global(.bg-dark) .quantityHeader strong,
-:global(.bg-dark) .quantityValue {
+:global(.bg-dark) .quantityValue,
+:global(.bg-dark) .price {
 	color: #fff8ef;
 }
 
 :global(.bg-dark) .description,
 :global(.bg-dark) .recovery p,
-:global(.bg-dark) .quantityHeader {
+:global(.bg-dark) .quantityHeader,
+:global(.bg-dark) .statusMessage {
 	color: rgba(255, 248, 239, 0.76);
 }
 
-:global(.bg-dark) .eyebrow {
+:global(.bg-dark) .eyebrow,
+:global(.bg-dark) .backLink {
 	color: #f4c430;
+}
+
+:global(.bg-dark) .backLink:hover,
+:global(.bg-dark) .backLink:focus {
+	color: #fff8ef;
 }
 
 :global(.bg-dark) .quantityButton,
@@ -270,7 +316,7 @@
 @media (max-width: 980px) {
 	.product {
 		grid-template-columns: 1fr;
-		align-items: start;
+		align-items: flex-start;
 		max-width: 680px;
 	}
 
@@ -316,14 +362,17 @@
 @media (prefers-reduced-motion: reduce) {
 	.quantityButton,
 	.addButton,
-	.menuLink {
+	.menuLink,
+	.backLink {
 		transition: none;
 	}
 
 	.addButton:hover,
 	.addButton:focus,
 	.menuLink:hover,
-	.menuLink:focus {
+	.menuLink:focus,
+	.backLink:hover,
+	.backLink:focus {
 		transform: none;
 	}
 }
